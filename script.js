@@ -1,7 +1,208 @@
 // DOM Elements Declarations
 // ciaone
 
-const questionTitle = document.getElementById("question-title")
+const questionsGossip = [
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "Which celebrity breakup shocked the music industry the most in recent years?",
+    correct_answer: "Taylor Swift and Joe Alwyn",
+    incorrect_answers: [
+      "Ed Sheeran and Cherry Seaborn",
+      "Adele and Rich Paul",
+      "Billie Eilish and Jesse Rutherford",
+    ],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What rock band is known for having one of the wildest tour lifestyles in history?",
+    correct_answer: "Mötley Crüe",
+    incorrect_answers: ["Coldplay", "Imagine Dragons", "U2"],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "Which artist famously changed their stage name and rebranded their entire image?",
+    correct_answer: "Prince",
+    incorrect_answers: ["Drake", "Bruno Mars", "Shawn Mendes"],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What was the biggest pop music scandal of the 2010s?",
+    correct_answer: "Taylor Swift and Kanye West feud",
+    incorrect_answers: [
+      "Adele’s album delay",
+      "Ed Sheeran’s hiatus",
+      "Dua Lipa’s tour cancellation",
+    ],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which rock album is often considered the greatest of all time?",
+    correct_answer: "The Dark Side of the Moon",
+    incorrect_answers: ["Nevermind", "Back in Black", "Hotel California"],
+  },
+  {
+    category: "Music: Pop",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What artist is known for dropping surprise albums without prior announcement?",
+    correct_answer: "Beyoncé",
+    incorrect_answers: ["Katy Perry", "Justin Bieber", "Sam Smith"],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "Which musician had the most controversial performance at an awards show?",
+    correct_answer: "Miley Cyrus",
+    incorrect_answers: ["Ariana Grande", "Harry Styles", "Olivia Rodrigo"],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What band defined the grunge movement of the early 90s?",
+    correct_answer: "Nirvana",
+    incorrect_answers: ["Green Day", "Blink-182", "Red Hot Chili Peppers"],
+  },
+  {
+    category: "Music: Pop",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which pop star has the most loyal fanbase in music culture?",
+    correct_answer: "Taylor Swift",
+    incorrect_answers: ["Katy Perry", "Camila Cabello", "Charlie Puth"],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What rock legend is famous for destroying guitars on stage?",
+    correct_answer: "Jimi Hendrix",
+    incorrect_answers: ["Eric Clapton", "David Gilmour", "Mark Knopfler"],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which celebrity feud in the music industry lasted the longest?",
+    correct_answer: "Oasis brothers feud",
+    incorrect_answers: [
+      "Drake vs The Weeknd",
+      "Ariana vs Billie",
+      "Dua Lipa vs Miley Cyrus",
+    ],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What was the most talked-about comeback in music history?",
+    correct_answer: "Eminem",
+    incorrect_answers: ["One Direction", "Jonas Brothers", "Black Eyed Peas"],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which band pioneered the concept album format?",
+    correct_answer: "The Beatles",
+    incorrect_answers: ["Maroon 5", "OneRepublic", "The Killers"],
+  },
+  {
+    category: "Music: Pop",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What pop artist is known for constantly reinventing their musical style?",
+    correct_answer: "Madonna",
+    incorrect_answers: ["Selena Gomez", "Demi Lovato", "Halsey"],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which rock festival is considered the most iconic of all time?",
+    correct_answer: "Woodstock",
+    incorrect_answers: ["Coachella", "Lollapalooza", "Glastonbury"],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What musician had the most unexpected collaboration in recent years?",
+    correct_answer: "Lil Nas X and Billy Ray Cyrus",
+    incorrect_answers: [
+      "Adele and Ed Sheeran",
+      "Bruno Mars and Anderson .Paak",
+      "Drake and Future",
+    ],
+  },
+  {
+    category: "Music: Pop Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "Which artist’s personal life has influenced their music the most?",
+    correct_answer: "Taylor Swift",
+    incorrect_answers: ["Post Malone", "Shawn Mendes", "Khalid"],
+  },
+  {
+    category: "Music: Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What band is known for having the most dramatic internal conflicts?",
+    correct_answer: "Fleetwood Mac",
+    incorrect_answers: ["Coldplay", "Imagine Dragons", "Muse"],
+  },
+  {
+    category: "Music: Culture",
+    type: "multiple",
+    difficulty: "easy",
+    question: "Which music genre has had the biggest cultural impact globally?",
+    correct_answer: "Pop",
+    incorrect_answers: ["Country", "Jazz", "Folk"],
+  },
+  {
+    category: "Music: Pop/Rock",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "What is the most controversial song ever released in pop or rock history?",
+    correct_answer: "Like a Prayer",
+    incorrect_answers: ["Shape of You", "Happy", "Counting Stars"],
+  },
+]
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+const sidebar = document.getElementById("sidebar")
+const domande = document.getElementById("domande")
 const buttonSpace = document.getElementById("button-space")
 const currentQuestionNum = document.getElementById("question-num")
 const submitButton = document.getElementById("submit-button")
@@ -10,599 +211,17 @@ const submitButton = document.getElementById("submit-button")
 
 let score = parseInt(sessionStorage.getItem("score")) || 0 // Dinamically updated score that will be displayed in the results page.
 let questionNumber = 0 // Number of the question the user is facing.
-const usedQuestionsArr =
+let usedQuestionsArr =
   // array di domande utilizzate
   JSON.parse(sessionStorage.getItem("usedQuestionsArr")) || []
-const usedAnswersArr =
+let usedAnswersArr =
   // array di risposta utilizzate
   JSON.parse(sessionStorage.getItem("usedAnswersArr")) || []
 const difficulty = sessionStorage.getItem("chosenDifficulty") || "easy"
-const numOfQuestions = sessionStorage.getItem("totalQuestions") || 10
+const numOfQuestions = sessionStorage.getItem("totalQuestions") || 5
 let currentQuestion = {}
-const questionsEasy = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does CPU stand for?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
-    correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "The logo for Snapchat is a Bell.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question:
-      "Pointers were not used in the original C programming language; they were added later on in C++.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the most preferred image format used for logos in the Wikimedia database?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "In web design, what does CSS stand for?",
-    correct_answer: "Cascading Style Sheet",
-    incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheet",
-      "Computer Style Sheet",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the code name for the mobile operating system Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "On Twitter, what is the character limit for a Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "Linux was first created as an alternative to Windows XP.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "Which programming language shares its name with an island in Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does RAM stand for?",
-    correct_answer: "Random Access Memory",
-    incorrect_answers: [
-      "Read Access Memory",
-      "Run Access Memory",
-      "Rapid Access Memory",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which device is used to input text into a computer?",
-    correct_answer: "Keyboard",
-    incorrect_answers: ["Monitor", "Printer", "Speaker"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "A mouse is an input device.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which company developed the Windows operating system?",
-    correct_answer: "Microsoft",
-    incorrect_answers: ["Apple", "Google", "IBM"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does URL stand for?",
-    correct_answer: "Uniform Resource Locator",
-    incorrect_answers: [
-      "Universal Resource Link",
-      "Uniform Retrieval Link",
-      "Universal Reference Locator",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "HTML is used to structure web pages.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which symbol is used for comments in JavaScript (single line)?",
-    correct_answer: "//",
-    incorrect_answers: [".", "#", "/* */"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which part of the computer performs calculations?",
-    correct_answer: "CPU",
-    incorrect_answers: ["RAM", "Hard Drive", "GPU"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "A browser is used to access websites.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which file extension is used for JavaScript files?",
-    correct_answer: ".js",
-    incorrect_answers: [".html", ".css", ".java"],
-  },
-]
 
-const questionsMedium = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What does the 'HTTP' protocol primarily define?",
-    correct_answer: "How messages are formatted and transmitted over the web",
-    incorrect_answers: [
-      "How files are stored on a server",
-      "How DNS resolves domain names",
-      "How encryption keys are generated",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which data structure uses FIFO (First In, First Out)?",
-    correct_answer: "Queue",
-    incorrect_answers: ["Stack", "Tree", "Graph"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "medium",
-    question: "In JavaScript, 'null' and 'undefined' are strictly equal (===).",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question:
-      "Which sorting algorithm has the best average-case time complexity?",
-    correct_answer: "Merge Sort",
-    incorrect_answers: ["Bubble Sort", "Insertion Sort", "Selection Sort"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What does SQL stand for?",
-    correct_answer: "Structured Query Language",
-    incorrect_answers: [
-      "Simple Query Language",
-      "Sequential Query Logic",
-      "Structured Question Language",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "medium",
-    question: "A compiler translates code line-by-line during execution.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What does DOM stand for in web development?",
-    correct_answer: "Document Object Model",
-    incorrect_answers: [
-      "Data Object Model",
-      "Digital Ordinance Model",
-      "Document Oriented Method",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which HTTP status code means 'Not Found'?",
-    correct_answer: "404",
-    incorrect_answers: ["200", "500", "301"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "medium",
-    question: "JavaScript is a statically typed language.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which of these is a JavaScript framework?",
-    correct_answer: "React",
-    incorrect_answers: ["Laravel", "Django", "Flask"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What does API stand for?",
-    correct_answer: "Application Programming Interface",
-    incorrect_answers: [
-      "Applied Program Internet",
-      "Advanced Programming Interaction",
-      "Application Process Interface",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which method converts JSON data into a JavaScript object?",
-    correct_answer: "JSON.parse()",
-    incorrect_answers: [
-      "JSON.stringify()",
-      "JSON.convert()",
-      "JSON.toObject()",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "medium",
-    question: "CSS Flexbox is primarily used for layout and alignment.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which keyword is used to declare a constant in JavaScript?",
-    correct_answer: "const",
-    incorrect_answers: ["let", "var", "constant"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which HTML tag is used to include JavaScript?",
-    correct_answer: `\u003c script \u003e`,
-    incorrect_answers: [
-      `\u003c js \u003e`,
-      `\u003c javascript \u003e`,
-      `\u003c code \u003e`,
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What does 'responsive design' mean?",
-    correct_answer: "Design that adapts to different screen sizes and devices",
-    incorrect_answers: [
-      "Design that loads very quickly",
-      "Design that responds to user clicks",
-      "Design optimized only for mobile",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question:
-      "Which CSS property is used to change the text color of an element?",
-    correct_answer: "color",
-    incorrect_answers: ["font-color", "text-color", "background-color"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which JavaScript method adds an element to the end of an array?",
-    correct_answer: "push()",
-    incorrect_answers: ["pop()", "shift()", "unshift()"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "medium",
-    question: "In HTML, the <div> tag is used to create a division or section.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "medium",
-    question: "Which of these is used to style web pages?",
-    correct_answer: "CSS",
-    incorrect_answers: ["HTML", "Python", "SQL"],
-  },
-]
-
-const questionsHard = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "What is the time complexity of binary search?",
-    correct_answer: "O(log n)",
-    incorrect_answers: ["O(n)", "O(n log n)", "O(1)"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which layer of the OSI model is responsible for routing?",
-    correct_answer: "Network Layer",
-    incorrect_answers: ["Transport Layer", "Data Link Layer", "Session Layer"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which of the following is NOT a NoSQL database?",
-    correct_answer: "PostgreSQL",
-    incorrect_answers: ["MongoDB", "Cassandra", "Redis"],
-  },
-  {
-    category: "Science: Computers",
-    type: "hard",
-    difficulty: "hard",
-    question: "What is a race condition in programming?",
-    correct_answer:
-      "When the system's behavior depends on the sequence or timing of uncontrollable events",
-    incorrect_answers: [
-      "When two loops execute at the same speed",
-      "When a program runs too fast for the CPU",
-      "When threads are executed sequentially",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question:
-      "What is the space complexity of a recursive function without tail call optimization?",
-    correct_answer: "O(n)",
-    incorrect_answers: ["O(1)", "O(log n)", "O(n log n)"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which HTTP method is idempotent?",
-    correct_answer: "PUT",
-    incorrect_answers: ["POST", "PATCH", "CONNECT"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "hard",
-    question:
-      "In JavaScript, closures allow a function to access variables from its outer scope even after the outer function has returned.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "What does ACID stand for in database systems?",
-    correct_answer: "Atomicity, Consistency, Isolation, Durability",
-    incorrect_answers: [
-      "Accuracy, Consistency, Isolation, Durability",
-      "Atomicity, Control, Integrity, Durability",
-      "Atomicity, Consistency, Integration, Data",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which of these is a characteristic of a deadlock?",
-    correct_answer: "Circular wait",
-    incorrect_answers: [
-      "Parallel execution",
-      "Load balancing",
-      "Memory caching",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question:
-      "In Big-O notation, which algorithm is the most efficient for large datasets?",
-    correct_answer: "O(log n)",
-    incorrect_answers: ["O(n)", "O(n^2)", "O(2^n)"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "What is the purpose of a load balancer?",
-    correct_answer: "Distribute network traffic across multiple servers",
-    incorrect_answers: [
-      "Encrypt network data",
-      "Store database backups",
-      "Compile source code",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "hard",
-    question: "A hash table guarantees O(1) lookup time in all cases.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question:
-      "Which protocol is used to securely transfer files over the internet?",
-    correct_answer: "SFTP",
-    incorrect_answers: ["FTP", "HTTP", "SMTP"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "What does normalization in databases aim to achieve?",
-    correct_answer: "Reduce redundancy and improve data integrity",
-    incorrect_answers: [
-      "Increase query speed by duplicating data",
-      "Encrypt sensitive data",
-      "Simplify UI design",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question:
-      "What is the main purpose of the 'use strict' directive in JavaScript?",
-    correct_answer: "Enforce stricter parsing and error handling",
-    incorrect_answers: [
-      "Improve execution speed",
-      "Enable asynchronous code",
-      "Allow global variables",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question:
-      "Which data structure is best suited for implementing recursion internally?",
-    correct_answer: "Stack",
-    incorrect_answers: ["Queue", "Heap", "Graph"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "hard",
-    question: "In CSS, 'z-index' only works on positioned elements.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which of these is a feature of functional programming?",
-    correct_answer: "Pure functions",
-    incorrect_answers: [
-      "Global state mutation",
-      "Class inheritance",
-      "Manual memory management",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "What is the purpose of a 'Promise' in JavaScript?",
-    correct_answer: "Handle asynchronous operations",
-    incorrect_answers: [
-      "Store data permanently",
-      "Create loops",
-      "Define CSS styles",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "hard",
-    question: "Which of the following best describes 'event bubbling'?",
-    correct_answer: "Events propagate from child to parent elements",
-    incorrect_answers: [
-      "Events stop at the first element",
-      "Events only trigger on the root element",
-      "Events propagate from parent to child only",
-    ],
-  },
-]
-
-const pulledQuestions = [] // Array domande già poste
+let pulledQuestions = [] // Array domande già poste
 let arrQuestions = [] // Array dinamico che avrà le domande o Easy o Medium o Hard
 
 const randomQuestionExtraction = function () {
@@ -640,93 +259,9 @@ const getRandomQuestionOrder = (questionObj) => {
   }
 }
 
-// logica timer
-let timerInterval = null
-
-const startTimer = () => {
-  const timer = document.querySelector(".timer")
-  const progress = document.querySelector(".progress")
-
-  let totalSec = 20
-  let timeLeft = totalSec
-
-  const circumference = 2 * Math.PI * 90
-  progress.style.strokeDasharray = circumference
-  timer.classList.add("timer-text")
-
-  clearInterval(timerInterval)
-
-  timer.innerHTML = `
-    <p class="timer-words">SECONDS</p>
-    <p class="timer-nums">${timeLeft}</p>
-    <p class="timer-words">REMAINING</p>`
-  progress.style.strokeDashoffset = 0
-
-  timerInterval = setInterval(() => {
-    --timeLeft
-    timer.innerHTML = `
-    <p class="timer-words">SECONDS</p>
-    <p class="timer-nums">${timeLeft}</p>
-    <p class="timer-words">REMAINING</p>`
-
-    const offset = circumference - (timeLeft / totalSec) * circumference
-    progress.style.strokeDashoffset = offset
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval)
-
-      progress.style.strokeDashoffset = circumference
-
-      setTimeout(() => {
-        checkAnswer(null, currentQuestion)
-      }, 20)
-    }
-  }, 1000)
-}
-
-// Funzione to display the current question. It creates button elements which on their onclick attribute, fire the checkAnswer function to validate the answer.
-
-const displayNextQuestion = (questionObj) => {
-  currentQuestion = questionObj
-  buttonSpace.innerHTML = ""
-  if (questionNumber >= numOfQuestions) {
-    sessionStorage.setItem("score", score)
-    sessionStorage.setItem("usedAnswersArr", JSON.stringify(usedAnswersArr))
-    sessionStorage.setItem("usedQuestionsArr", JSON.stringify(usedQuestionsArr))
-    questionTitle.innerText = `The Quiz is over.\n
-    Go to your results!`
-    buttonSpace.innerHTML = `
-        <a href="../html/results.html">
-        <button>Results</button>
-        </a>
-    `
-    buttonSpace.classList.add("button-start")
-    return
-  }
-  const { question, correct_answer, incorrect_answers } = questionObj
-  const allAnswers = [...incorrect_answers, correct_answer]
-  questionTitle.innerText = `${question}`
-  questionNumber++
-  currentQuestionNum.innerText = `QUESTION ${questionNumber}`
-  getRandomQuestionOrder(questionObj).forEach((index) => {
-    buttonSpace.innerHTML += `
-    <button class="button-answer">
-    ${allAnswers[index]}
-    </button>
-    `
-  })
-  const buttonAnswers = document.querySelectorAll(".button-answer")
-  buttonAnswers.forEach((button) =>
-    button.addEventListener("click", (e) => checkAnswer(e, questionObj)),
-  )
-  startTimer()
-}
-
 // Function to check if the answer is correct. If it is, updates score by 1.
 
 const checkAnswer = (e, questionObj) => {
-  clearInterval(timerInterval)
-
   const { question, correct_answer } = questionObj
   const buttonAnswers = document.querySelectorAll(".button-answer")
   buttonAnswers.forEach((btn) => {
@@ -763,225 +298,157 @@ const checkAnswer = (e, questionObj) => {
   }, 550)
 }
 
-// Function to display the results
-
-const displayResults = () => {
-  const correctPercentageP = document.getElementById(
-    "percentage-correct-answers",
-  )
-  const resultMessage = document.getElementById("result-message")
-  const wrongPercentageP = document.getElementById("percentage-wrong-answers")
-  const correctAnswersP = document.getElementById("number-correct-answers")
-  const wrongAnswersP = document.getElementById("number-wrong-answers")
-  correctPercentageP.innerText = `${((score / numOfQuestions) * 100).toFixed(1)}%`
-  wrongPercentageP.innerText = `${(((numOfQuestions - score) / numOfQuestions) * 100).toFixed(1)}%`
-  correctAnswersP.innerText = `${score}/${numOfQuestions} questions`
-  wrongAnswersP.innerText = `${numOfQuestions - score}/${numOfQuestions} questions`
-  if (((score / numOfQuestions) * 100).toFixed(1) < 60) {
-    resultMessage.innerHTML = `
-    <h4>We're sorry!</h4>
-    <p class="youPass">You didn't pass the exam this time.</p>
-    <div class="certificate">
-    <p>You can try again later!</p>
-    <p>Check your email (including promotion / spam folder)</p>
-    </div>
-    `
-  }
-}
-
-window.addEventListener("load", () => {
-  // --- LOGICA PAGINA WELCOME ---
+const displayHtml = function () {
   if (document.getElementById("welcome-body")) {
-    const startButton = document.querySelector(".button-start button")
+    sidebar.innerHTML = `
+<main>
+      <form class="welcome-form">
+        <section class="title">
+          <h1>Welcome to <strong>your worst date</strong></h1>
+        </section>
 
-    startButton.addEventListener("click", () => {
-      const difficultyChosen = document.getElementById("difficulty").value
-      const countChosen = document.getElementById("question-count").value
+        <section class="subtitle">
+          <h2>Instructions</h2>
+          <p>
+            We don't expect most engineers to know the answers to all of these
+            questions, so don't worry if you're unsure of a few of them.
+          </p>
+        </section>
 
-      sessionStorage.setItem("chosenDifficulty", difficultyChosen)
-      sessionStorage.setItem("totalQuestions", countChosen)
+        <section class="list">
+          <ul>
+            <li>
+              Each question is <strong>timed</strong> and can only be
+              <strong>answered once</strong>
+            </li>
+            <li>
+              Changing browser tab or opening other windows will
+              <strong>invalidate the question</strong>
+            </li>
+            <li>This exam will take approx. <strong>0-5 minutes</strong></li>
+          </ul>
+        </section>
+
+
+        <section class="button-start">
+          <button id="button-proceed" type="submit">Proceed</button>
+        </section>
+      </form>
+    </main>
+`
+    const proceedButton = document.getElementById("button-proceed")
+    const welcomeForm = document.querySelector(".welcome-form")
+
+    welcomeForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const body = document.getElementById("welcome-body")
+      body.setAttribute("id", "benchmark-body")
+      displayHtml()
     })
-  }
+  } else if (document.getElementById("benchmark-body")) {
+    sidebar.innerHTML = `<main>
+      <article id="question-diplay">
+        <p id="question-title"></p>
+      </article>
+      <section id="button-space"></section>
+    </main> `
 
-  // --- LOGICA PAGINA BENCHMARK (QUIZ) ---
-  if (document.getElementById("benchmark-body")) {
-    const totalQuestionNum = document.getElementById("total-question-num")
-    totalQuestionNum.innerText = `/ ${numOfQuestions}`
-    if (difficulty === "easy")
-      arrQuestions = questionsEasy.filter((question, i) => i <= numOfQuestions)
-    else if (difficulty === "medium")
-      arrQuestions = questionsMedium.filter(
+    if (difficulty === "easy") {
+      arrQuestions = questionsGossip.filter(
         (question, i) => i <= numOfQuestions,
       )
-    else if (difficulty === "hard")
-      arrQuestions = questionsHard.filter((question, i) => i <= numOfQuestions)
+    }
 
-    // Fai partire il quiz immediatamente
     const primaDomanda = randomQuestionExtraction()
     displayNextQuestion(primaDomanda)
 
     return
-  } else if (document.getElementById("results-body")) {
-    const checkButton = document.getElementById("button-check")
-    const checkSection = document.getElementById("check-section")
-    new Chart(document.getElementById("myDonutChart"), config) // Render del grafico
-    displayResults()
-    success()
-
-    let answersVisible = false
-
-    checkButton.addEventListener("click", () => {
-      if (!answersVisible) {
-        checkSection.innerHTML = ""
-
-        usedQuestionsArr.forEach((ques, i) => {
-          checkSection.innerHTML += `
-        <div class="answer-check">  
-          <p>${ques}</p>
-          <p>${usedAnswersArr[i]}</p>
-        </div>`
-        })
-        checkButton.innerText = "HIDE ANSWERS"
-        checkSection.classList.remove("hidden")
-        answersVisible = true
-      } else {
-        checkSection.classList.toggle("hidden")
-        checkButton.innerText = "CHECK YOUR ANSWERS"
-        answersVisible = false
-      }
+  } else if (document.getElementById("result-body")) {
+    console.log(usedAnswersArr)
+    sidebar.innerHTML = `<p> ${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
+    if (score >= 3) {
+      sidebar.innerHTML += "<p> sta sera te la lancio </p>"
+    } else {
+      sidebar.innerHTML += "<p> sparisci </p>"
+    }
+    sidebar.innerHTML +=
+      " <button id='try-again'> 🔥😉💋 puoi riprovarci </button>"
+    const tryAgain = document.getElementById("try-again")
+    tryAgain.addEventListener("click", () => {
+      const body = document.getElementById("result-body")
+      body.setAttribute("id", "welcome-body")
+      questionNumber = 0
+      pulledQuestions = []
+      usedAnswersArr = []
+      usedQuestionsArr = []
+      displayHtml()
     })
+
     sessionStorage.clear()
-    return
-  } else if (document.getElementById("feedback-body")) {
-    const formFeedback = document.getElementById("feedback-form")
-    const feedbackInput = document.getElementById("feedback")
-    submitButton.addEventListener("click", (e) => resetForm(e))
-    const resetForm = (e) => {
-      e.preventDefault()
-      if (!feedbackInput.value) {
-        // feddbackinput.value===fasle => false === false(true)   undefined===false(false) null===false(false)
-        // !feedbackinput.value => false === false (true)  undefined===false(true)  null====false(true)
-        alert("Inserisci un commento valido.")
-        return
-      }
-      submitButton.setAttribute("disabled", "true")
-      submitButton.style.cursor = "not-allowed"
-      alert("Grazie! Il tuo feedback è stato registrato.")
-      formFeedback.reset()
-      votoStars = -1
-      // -1 è l'indice dellarray di stelle (0 indica il primo valore cioè la prima stella )
-      for (let s = 0; s < stars.length; s++) {
-        stars[s].src = starVuota
-      }
-    }
+  }
+}
+displayHtml()
 
-    formFeedback.addEventListener("submit", function (e) {
-      e.preventDefault()
-      const feedbackValue = feedbackInput.value
-      if (!feedbackInput.value) {
-        alert("Inserisci un commento valido.")
-        return
-      }
-      console.log("Feedback ricevuto:", feedbackValue)
-      alert("Grazie! Il tuo feedback è stato registrato.")
-      formFeedback.reset()
-      votoStars = -1
-      for (let s = 0; s < stars.length; s++) {
-        stars[s].src = starVuota
-      }
+const displayNextQuestion = (questionObj) => {
+  const buttonSpace = document.getElementById("button-space")
+  const questionTitle = document.getElementById("question-title")
+  currentQuestion = questionObj
+  buttonSpace.innerHTML = ""
+  if (questionNumber >= numOfQuestions) {
+    sessionStorage.setItem("score", score)
+    sessionStorage.setItem("usedAnswersArr", JSON.stringify(usedAnswersArr))
+    sessionStorage.setItem("usedQuestionsArr", JSON.stringify(usedQuestionsArr))
+    questionTitle.innerText = `The Quiz is over.\n
+    Go to your results!`
+    buttonSpace.innerHTML = `
+        <button id='result-button'>Results</button>
+    `
+    buttonSpace.classList.add("button-start")
+    const resultbutton = document.getElementById("result-button")
+    resultbutton.addEventListener("click", () => {
+      const body = document.getElementById("benchmark-body")
+      body.setAttribute("id", "result-body")
+      displayHtml()
     })
+    return
   }
-})
-
-// 1. Configurazione dei dati
-const data = {
-  datasets: [
-    {
-      data: [
-        (((numOfQuestions - score) / numOfQuestions) * 100).toFixed(1),
-        ((score / numOfQuestions) * 100).toFixed(1),
-      ],
-      backgroundColor: ["#D20094", "#00ffff"],
-      hoverOffset: 0,
-    },
-  ],
-}
-
-const stars = document.getElementsByClassName("star")
-const starVuota = "/assets/emptyStar.svg"
-const starPiena = "/assets/star.svg"
-let votoStars = -1
-
-for (let i = 0; i < stars.length; i++) {
-  stars[i].addEventListener("mouseenter", function () {
-    if (votoStars !== -1) return
-    for (let j = 0; j < stars.length; j++) {
-      if (j <= i) {
-        stars[j].src = starPiena
-      } else {
-        stars[j].src = starVuota
-      }
-    }
+  const { question, correct_answer, incorrect_answers } = questionObj
+  const allAnswers = [...incorrect_answers, correct_answer]
+  questionTitle.innerText = `${question}`
+  questionNumber++
+  getRandomQuestionOrder(questionObj).forEach((index) => {
+    buttonSpace.innerHTML += `
+    <button class="button-answer">
+    ${allAnswers[index]}
+    </button>
+    `
   })
-
-  stars[i].addEventListener("mouseleave", function () {
-    if (votoStars !== -1) return
-
-    for (let k = 0; k < stars.length; k++) {
-      if (k <= votoStars) {
-        stars[k].src = starPiena
-      } else {
-        stars[k].src = starVuota
-      }
-    }
-  })
-
-  stars[i].addEventListener("click", function () {
-    if (votoStars !== -1) return
-
-    votoStars = i
-    let voto = i + 1
-    for (let s = 0; s < stars.length; s++) {
-      stars[s].classList.remove("can-hover")
-    }
-    alert("Rating: " + voto)
-  })
+  const buttonAnswers = document.querySelectorAll(".button-answer")
+  buttonAnswers.forEach((button) =>
+    button.addEventListener("click", (e) => checkAnswer(e, questionObj)),
+  )
 }
 
-// 3. Inizializzazione del grafico
-const config = {
-  type: "doughnut",
-  data: data,
-  options: {
-    cutout: "70%",
-  },
-}
-
-// form di feedback
-
-// animation effect
-const success = function () {
-  if (((score / numOfQuestions) * 100).toFixed(1) > 75) {
-    for (let i = 0; i < 100; i++) {
-      setTimeout(() => {
-        const coriandolo = document.createElement("div")
-        coriandolo.className = "coriandolo"
-        coriandolo.innerHTML = "🎉"
-
-        coriandolo.style.left = Math.random() * 100 + "vw"
-
-        coriandolo.style.top = "-10px"
-
-        coriandolo.style.animationDuration = Math.random() * 3 + 2 + "s"
-
-        const resultsBody = document.querySelector("#results-body")
-
-        resultsBody.appendChild(coriandolo)
-
-        setTimeout(() => {
-          coriandolo.remove()
-        }, 5000)
-      }, i * 100)
-    }
-  }
-}
+// const displayResults = () => {
+//   const correctPercentageP = document.getElementById(
+//     "percentage-correct-answers",
+//   )
+//   const resultMessage = document.getElementById("result-message")
+//   const wrongPercentageP = document.getElementById("percentage-wrong-answers")
+//   const correctAnswersP = document.getElementById("number-correct-answers")
+//   const wrongAnswersP = document.getElementById("number-wrong-answers")
+//   correctPercentageP.innerText = `${((score / numOfQuestions) * 100).toFixed(1)}%`
+//   wrongPercentageP.innerText = `${(((numOfQuestions - score) / numOfQuestions) * 100).toFixed(1)}%`
+//   correctAnswersP.innerText = `${score}/${numOfQuestions} questions`
+//   wrongAnswersP.innerText = `${numOfQuestions - score}/${numOfQuestions} questions`
+//   if (((score / numOfQuestions) * 100).toFixed(1) < 60) {
+//     resultMessage.innerHTML = `
+//     <h4>We're sorry!</h4>
+//     <p class="youPass">You didn't pass the exam this time.</p>
+//     <div class="certificate">
+//     <p>You can try again later!</p>
+//     <p>Check your email (including promotion / spam folder)</p>
+//     </div>
+//     `
+//   }
+// }
