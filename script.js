@@ -1,5 +1,9 @@
 const select = document.getElementById("character");
 
+// === CÓDIGO INSERTADO: referencia a los botones visuales ===
+const visualButtons = document.querySelectorAll(".name-btn");
+// === FIN DEL CÓDIGO INSERTADO ===
+
 select.addEventListener("change", (e) => {
   document.querySelectorAll(".selectedGirl").forEach((girl) => {
     girl.classList.remove("selectedGirl");
@@ -10,20 +14,26 @@ select.addEventListener("change", (e) => {
     selected.classList.add("selectedGirl");
   }
 
-  // === CÓDIGO INSERTADO: sincroniza la selección visual del formulario ===
-  document.querySelectorAll(".fake-option").forEach((option) => {
-    option.classList.remove("active");
-    const text = option.innerText.replace("▶", "").trim().toLowerCase();
-
-    if (text === e.target.value.toLowerCase()) {
-      option.classList.add("active");
-      option.innerText = `▶ ${e.target.value}`;
+  // === CÓDIGO INSERTADO: sincroniza el botón visual seleccionado ===
+  visualButtons.forEach((btn) => {
+    if (btn.dataset.value === e.target.value) {
+      btn.classList.add("is-selected");
     } else {
-      option.innerText = option.innerText.replace("▶", "").trim();
+      btn.classList.remove("is-selected");
     }
   });
   // === FIN DEL CÓDIGO INSERTADO ===
 });
+
+// === CÓDIGO INSERTADO: click en botones visuales ===
+visualButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const value = button.dataset.value;
+    select.value = value;
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+});
+// === FIN DEL CÓDIGO INSERTADO ===
 
 let character = "";
 
@@ -34,7 +44,6 @@ form.addEventListener("submit", (e) => {
   character = document.getElementById("character").value;
   start();
 });
-
 function start() {
   if (character === "Emma") {
     const main = document.querySelector("main");
