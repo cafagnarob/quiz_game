@@ -9,6 +9,20 @@ select.addEventListener("change", (e) => {
   if (selected) {
     selected.classList.add("selectedGirl");
   }
+
+  // === CÓDIGO INSERTADO: sincroniza la selección visual del formulario ===
+  document.querySelectorAll(".fake-option").forEach((option) => {
+    option.classList.remove("active");
+    const text = option.innerText.replace("▶", "").trim().toLowerCase();
+
+    if (text === e.target.value.toLowerCase()) {
+      option.classList.add("active");
+      option.innerText = `▶ ${e.target.value}`;
+    } else {
+      option.innerText = option.innerText.replace("▶", "").trim();
+    }
+  });
+  // === FIN DEL CÓDIGO INSERTADO ===
 });
 
 let character = "";

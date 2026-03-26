@@ -1,144 +1,499 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  background-image: url(./assets/images/barretro.svg);
+  min-height: 100vh;
+  color: white;
+  background-image: url("./assets/images/barretro.svg");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: -1;
+}
+
+/* =========================
+   PANTALLA INICIAL
+   ========================= */
+
+#welcome-body main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  align-items: end;
+  gap: 8px;
+  padding: 18px 20px 18px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+#welcome-body .tindermatch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+
+#welcome-body .tindermatch:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#welcome-body .tindermatch:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#welcome-body .tindermatch:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#welcome-body .tindermatch p {
+  margin-bottom: 10px;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  color: white;
+  line-height: 1.2;
+  text-shadow:
+    3px 0 black,
+    -3px 0 black,
+    0 3px black,
+    0 -3px black,
+    2px 2px black;
+}
+
+#welcome-body .tindermatch img {
+  width: clamp(280px, 30vw, 430px);
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 0 black);
+}
+
+#welcome-body .tindermatch::after {
+  content: "";
+  width: min(82%, 340px);
+  height: 8px;
+  background: black;
+  display: block;
+  margin-top: -4px;
+}
+
+.selectedGirl {
+  color: #ffe45c !important;
+  text-shadow:
+    3px 0 black,
+    -3px 0 black,
+    0 3px black,
+    0 -3px black,
+    2px 2px black,
+    0 0 8px #ffe45c,
+    0 0 16px #ffe45c;
+}
+
+/* PANEL */
+#welcome-body #character-choice {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  width: min(840px, 88%);
+  margin: 0 auto 10px;
+  background: rgba(245, 245, 245, 0.96);
+  color: black;
+  padding: 22px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  border: 6px solid black;
+  box-shadow: 8px 8px 0 black;
+}
+
+#welcome-body #character-choice label {
+  text-align: center;
+  font-size: clamp(1rem, 1.2vw, 1.35rem);
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: black;
+}
+
+/* selector visual */
+.fake-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  flex-wrap: wrap;
+  min-height: 28px;
+}
+
+.fake-option {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  text-transform: uppercase;
+  color: black;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fake-option.active {
+  position: relative;
+  padding-left: 18px;
+}
+
+.fake-option.active::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ocultamos el select real pero sigue funcionando para JS */
+#welcome-body #character-choice select {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+/* botón */
+#welcome-body #character-choice > button {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+#welcome-body #character-choice > button:hover,
+#welcome-body #character-choice > button:focus-visible {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+#welcome-body #character-choice > button:active {
+  transform: translateY(2px);
+}
+
+/* =========================
+   QUIZ / RESULT
+   ========================= */
 
 main {
   display: flex;
   flex-direction: row;
 }
 
-#animazione img {
-  width: 100vh;
-}
-
-.pixel-border {
-  margin-top: 30px;
-  width: 660px;
-  height: 717px;
-  background: white;
-  box-shadow:
-    10px 0 0 black,
-    -10px 0 0 black,
-    0 10px 0 black,
-    0 -10px 0 black;
-}
-
-#domande {
-  margin: 30px;
-  padding: 10px;
-}
-
-#risposte {
-  margin: 30px;
-  padding: 20px;
+#benchmark-body main,
+#result-body main {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
   gap: 20px;
-  align-items: center;
+  padding: 20px;
 }
 
-/* BOTONES RETRO */
-.retro-btn {
-  font-family: "Press Start 2P", system-ui;
-  font-size: 12px;
-  padding: 14px 22px;
-  border: none;
-  background: white;
-  color: black;
-  cursor: pointer;
-  text-transform: uppercase;
-  margin: 30px;
-
-  box-shadow:
-    4px 0 0 black,
-    -4px 0 0 black,
-    0 4px 0 black,
-    0 -4px 0 black;
+#animazione {
+  flex: 1;
+  display: flex;
+  align-items: end;
+  justify-content: center;
 }
 
-.retro-btn:hover {
-  background: #dcdcdc;
+#animazione img {
+  width: min(100%, 700px);
+  max-height: 95vh;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
-.retro-btn:active {
-  transform: translate(4px, 4px);
-  box-shadow:
-    2px 0 0 black,
-    -2px 0 0 black,
-    0 2px 0 black,
-    0 -2px 0 black;
-}
-
+.pixel-border,
 #sidebar {
-  text-align: center;
-  padding: 5%;
+  width: min(92vw, 860px);
+  min-height: 70vh;
+  margin: 36px auto;
+  background: rgba(245, 245, 245, 0.96);
+  color: black;
+  padding: 28px 22px;
+  border: 6px solid black;
+  box-shadow: 8px 8px 0 black;
 }
 
-form {
-  color: white;
+#benchmark-body #sidebar,
+#result-body #sidebar {
+  width: min(48vw, 860px);
+  min-height: calc(100vh - 72px);
+  margin: 0;
 }
 
 .welcome-form {
   color: black;
-}
-
-.tindermatch {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 26px;
+}
+
+.welcome-form .title,
+.welcome-form .subtitle {
+  width: 100%;
+  text-align: center;
+}
+
+.welcome-form .title h1 {
+  font-size: clamp(0.95rem, 1.2vw, 1.25rem);
+  line-height: 1.8;
+}
+
+.welcome-form .subtitle h2 {
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.welcome-form .subtitle p {
+  font-size: clamp(0.72rem, 0.92vw, 0.9rem);
+  line-height: 1.9;
+}
+
+.retro-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+  line-height: 1.5;
+  padding: 14px 18px;
+  border: 4px solid black;
+  background: #f5f5f5;
+  color: black;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 5px 5px 0 black;
+}
+
+.retro-btn:hover,
+.retro-btn:focus-visible {
+  background: black;
   color: white;
+  outline: none;
 }
 
-.tindermatch img {
-  width: 90%;
-}
-
-.selectedGirl {
-  font-size: 3em;
-  color: rgb(0, 0, 0);
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 15px #fff,
-    0 0 20px #49ff18,
-    0 0 30px #49ff18,
-    0 0 40px #49ff18,
-    0 0 55px #49ff18,
-    0 0 75px #49ff18,
-    2px 2px 2px rgba(206, 206, 206, 0);
+.retro-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 black;
 }
 
 .quiz-space {
+  width: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
+#question-display,
 #question-diplay {
-  margin: 60px;
-}
-
-#button-space {
-  width: 100%;
-  margin-top: 220px;
+  text-align: center;
+  font-size: clamp(0.8rem, 1.05vw, 1rem);
+  line-height: 1.8;
+  margin-bottom: 30px;
 }
 
 #question-title {
-  margin: 1% 1%;
+  line-height: 1.9;
+}
+
+#button-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+#result-body #sidebar p {
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: clamp(0.78rem, 1vw, 0.95rem);
 }
 
 .correct-answer {
-  color: rgba(0, 128, 0, 0.5);
+  color: rgba(0, 128, 0, 0.7);
 }
 
 .wrong-answer {
-  color: rgba(255, 0, 0, 0.5);
+  color: rgba(255, 0, 0, 0.7);
 }
 
-/* hola*/
+@media (max-width: 900px) {
+  #welcome-body main {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 2px;
+    padding: 14px 14px 18px;
+  }
+
+  #welcome-body .tindermatch img {
+    width: clamp(170px, 27vw, 270px);
+  }
+
+  #welcome-body .tindermatch p {
+    font-size: clamp(0.72rem, 1vw, 0.95rem);
+  }
+
+  #welcome-body #character-choice {
+    width: 96%;
+    padding: 18px 16px;
+  }
+
+  #benchmark-body main,
+  #result-body main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #benchmark-body #sidebar,
+  #result-body #sidebar {
+    width: 96%;
+    min-height: auto;
+  }
+
+  #animazione img {
+    width: min(90vw, 420px);
+  }
+}
+
+@media (max-width: 700px) {
+  #welcome-body main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    justify-items: center;
+    align-items: center;
+    gap: 18px;
+    padding: 12px;
+  }
+
+  #welcome-body .tindermatch:nth-of-type(1),
+  #welcome-body .tindermatch:nth-of-type(2),
+  #welcome-body .tindermatch:nth-of-type(3),
+  #welcome-body #character-choice {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  #welcome-body .tindermatch img {
+    width: min(72vw, 290px);
+  }
+
+  #welcome-body .tindermatch p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+
+  #welcome-body #character-choice {
+    width: 100%;
+    padding: 16px 12px;
+  }
+
+  .fake-selector {
+    gap: 18px;
+  }
+
+  .pixel-border,
+  #sidebar {
+    width: calc(100vw - 24px);
+    padding: 20px 14px;
+    margin: 20px auto;
+  }
+
+  .retro-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+.character-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px 34px;
+  flex-wrap: wrap;
+}
+
+.name-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.name-btn .arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.name-btn:hover .arrow,
+.name-btn:focus-visible .arrow,
+.name-btn.is-selected .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.name-btn:hover,
+.name-btn:focus-visible,
+.name-btn.is-selected {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.name-btn:active {
+  transform: translateY(2px);
+}
+
+/* el select real queda oculto pero sigue funcionando para JS */
+#character {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
