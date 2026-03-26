@@ -48,3 +48,23 @@ main {
 #sidebar {
   text-align: center;
 }
+
+#Emma {
+  width: 100px;
+}
+
+.tindermatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tindermatch img {
+  width: 90%;
+}
+
+.selectedGirl {
+  font-size: 3em;
+  color: red;
+}
