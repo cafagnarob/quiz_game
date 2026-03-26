@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+#animazione img {
+  width: 100vh;
+}
+
+.pixel-border {
+  border: 16px solid transparent;
+  border-image: url("pixel-border.svg") 16 stretch;
+}
