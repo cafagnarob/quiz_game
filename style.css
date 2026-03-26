@@ -77,10 +77,15 @@ main {
 
 #sidebar {
   text-align: center;
+  padding: 5%;
 }
 
-#Emma {
-  width: 100px;
+form {
+  color: white;
+}
+
+.welcome-form {
+  color: black;
 }
 
 .tindermatch {
@@ -88,6 +93,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .tindermatch img {
@@ -96,7 +102,17 @@ main {
 
 .selectedGirl {
   font-size: 3em;
-  color: red;
+  color: rgb(0, 0, 0);
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 20px #49ff18,
+    0 0 30px #49ff18,
+    0 0 40px #49ff18,
+    0 0 55px #49ff18,
+    0 0 75px #49ff18,
+    2px 2px 2px rgba(206, 206, 206, 0);
 }
 
 .quiz-space {
@@ -111,6 +127,18 @@ main {
 #button-space {
   width: 100%;
   margin-top: 220px;
+}
+
+#question-title {
+  margin: 1% 1%;
+}
+
+.correct-answer {
+  color: rgba(0, 128, 0, 0.5);
+}
+
+.wrong-answer {
+  color: rgba(255, 0, 0, 0.5);
 }
 
 /* hola*/

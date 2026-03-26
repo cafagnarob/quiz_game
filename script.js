@@ -1,36 +1,36 @@
-const select = document.getElementById("character")
+const select = document.getElementById("character");
 
 select.addEventListener("change", (e) => {
   document.querySelectorAll(".selectedGirl").forEach((girl) => {
-    girl.classList.remove("selectedGirl")
-  })
+    girl.classList.remove("selectedGirl");
+  });
 
-  const selected = document.getElementById(e.target.value)
+  const selected = document.getElementById(e.target.value);
   if (selected) {
-    selected.classList.add("selectedGirl")
+    selected.classList.add("selectedGirl");
   }
-})
+});
 
-let character = ""
+let character = "";
 
-const form = document.getElementById("character-choice")
+const form = document.getElementById("character-choice");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault()
-  character = document.getElementById("character").value
-  start()
-})
+  e.preventDefault();
+  character = document.getElementById("character").value;
+  start();
+});
 
 function start() {
   if (character === "Emma") {
-    const main = document.querySelector("main")
+    const main = document.querySelector("main");
 
     main.innerHTML = `
       <section id="animazione">
         <img src="./Girls1/Girls1.GIF" alt="" />
       </section>
       <div id="sidebar" class="pixel-border"></div>
-    `
+    `;
 
     const questionsGossip = [
       {
@@ -227,62 +227,62 @@ function start() {
         correct_answer: "Like a Prayer",
         incorrect_answers: ["Shape of You", "Happy", "Counting Stars"],
       },
-    ]
-    const sidebar = document.getElementById("sidebar")
+    ];
+    const sidebar = document.getElementById("sidebar");
 
-    let score = 0
-    let questionNumber = 0
-    const numOfQuestions = 5
-    let pulledQuestions = []
-    let usedQuestionsArr = []
-    let usedAnswersArr = []
+    let score = 0;
+    let questionNumber = 0;
+    const numOfQuestions = 5;
+    let pulledQuestions = [];
+    let usedQuestionsArr = [];
+    let usedAnswersArr = [];
 
     function randomQuestionExtraction() {
       if (pulledQuestions.length === questionsGossip.length) {
-        return null
+        return null;
       }
 
-      let selectedQuestion
+      let selectedQuestion;
 
       do {
-        const randomIndex = Math.floor(Math.random() * questionsGossip.length)
-        selectedQuestion = questionsGossip[randomIndex]
-      } while (pulledQuestions.includes(selectedQuestion))
+        const randomIndex = Math.floor(Math.random() * questionsGossip.length);
+        selectedQuestion = questionsGossip[randomIndex];
+      } while (pulledQuestions.includes(selectedQuestion));
 
-      pulledQuestions.push(selectedQuestion)
-      return selectedQuestion
+      pulledQuestions.push(selectedQuestion);
+      return selectedQuestion;
     }
 
     function getRandomAnswerOrder() {
-      return [0, 1, 2, 3].sort(() => Math.random() - 0.5)
+      return [0, 1, 2, 3].sort(() => Math.random() - 0.5);
     }
 
     function checkAnswer(e, questionObj) {
-      const { question, correct_answer } = questionObj
-      const buttonAnswers = document.querySelectorAll(".button-answer")
+      const { question, correct_answer } = questionObj;
+      const buttonAnswers = document.querySelectorAll(".button-answer");
 
       buttonAnswers.forEach((btn) => {
-        btn.disabled = true
-        btn.style.cursor = "not-allowed"
-      })
+        btn.disabled = true;
+        btn.style.cursor = "not-allowed";
+      });
 
-      if (e.target.innerText.trim() === correct_answer) {
-        e.target.classList.add("correct-answer")
-        score++
-        usedAnswersArr.push(`Your answer: ${correct_answer} ✅`)
+      if (e.target.innerText.toLowerCase() === correct_answer.toLowerCase()) {
+        e.target.classList.add("correct-answer");
+        score++;
+        usedAnswersArr.push(`Your answer: ${correct_answer} ✅`);
       } else {
-        e.target.classList.add("wrong-answer")
+        e.target.classList.add("wrong-answer");
         usedAnswersArr.push(
           `Your answer: ${e.target.innerText} ❌ - Correct answer: ${correct_answer} ✅`,
-        )
+        );
       }
 
-      usedQuestionsArr.push(question)
+      usedQuestionsArr.push(question);
 
       setTimeout(() => {
-        const nextQuestion = randomQuestionExtraction()
-        displayNextQuestion(nextQuestion)
-      }, 550)
+        const nextQuestion = randomQuestionExtraction();
+        displayNextQuestion(nextQuestion);
+      }, 550);
     }
 
     function displayHtml() {
@@ -302,21 +302,21 @@ function start() {
                 </p>
               </section>
 
-              <section class="retro-btn">
-                <button id="button-proceed" type="submit">Proceed</button>
+              <section >
+                <button class="retro-btn" id="button-proceed" type="submit">Proceed</button>
               </section>
             </form>
           </main>
-        `
+        `;
 
-        const welcomeForm = document.querySelector(".welcome-form")
+        const welcomeForm = document.querySelector(".welcome-form");
 
         welcomeForm.addEventListener("submit", (e) => {
-          e.preventDefault()
-          const body = document.getElementById("welcome-body")
-          body.setAttribute("id", "benchmark-body")
-          displayHtml()
-        })
+          e.preventDefault();
+          const body = document.getElementById("welcome-body");
+          body.setAttribute("id", "benchmark-body");
+          displayHtml();
+        });
       } else if (document.getElementById("benchmark-body")) {
         sidebar.innerHTML = `
           <main class="quiz-space">
@@ -325,79 +325,76 @@ function start() {
             </article>
             <section id="button-space"></section>
           </main>
-        `
+        `;
 
-        const firstQuestion = randomQuestionExtraction()
-        displayNextQuestion(firstQuestion)
+        const firstQuestion = randomQuestionExtraction();
+        displayNextQuestion(firstQuestion);
       } else if (document.getElementById("result-body")) {
-        sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
+        sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
 
         if (score >= 3) {
-          sidebar.innerHTML += "<p>sta sera te la lancio</p>"
+          sidebar.innerHTML += "<p>sta sera te la lancio</p>";
         } else {
-          sidebar.innerHTML += "<p>sparisci</p>"
+          sidebar.innerHTML += "<p>sparisci</p>";
         }
 
-        sidebar.innerHTML += `<button id="try-again">🔥😉💋 puoi riprovarci</button>`
+        sidebar.innerHTML += `<button class="retro-btn" id="try-again">🔥😉💋 puoi riprovarci</button>`;
 
-        const tryAgain = document.getElementById("try-again")
+        const tryAgain = document.getElementById("try-again");
 
         tryAgain.addEventListener("click", () => {
-          const body = document.getElementById("result-body")
-          body.setAttribute("id", "welcome-body")
+          const body = document.getElementById("result-body");
+          body.setAttribute("id", "welcome-body");
 
-          score = 0
-          questionNumber = 0
-          pulledQuestions = []
-          usedAnswersArr = []
-          usedQuestionsArr = []
+          score = 0;
+          questionNumber = 0;
+          pulledQuestions = [];
+          usedAnswersArr = [];
+          usedQuestionsArr = [];
 
-          displayHtml()
-        })
+          displayHtml();
+        });
       }
     }
 
     function displayNextQuestion(questionObj) {
-      const buttonSpace = document.getElementById("button-space")
-      const questionTitle = document.getElementById("question-title")
+      const buttonSpace = document.getElementById("button-space");
+      const questionTitle = document.getElementById("question-title");
 
       if (!questionObj || questionNumber >= numOfQuestions) {
-        questionTitle.innerText = "The Quiz is over.\nGo to your results!"
-        buttonSpace.innerHTML = `<button id="result-button">Results</button>`
+        questionTitle.innerText = "The Quiz is over.\nGo to your results!";
+        buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">Results</button>`;
 
-        const resultButton = document.getElementById("result-button")
+        const resultButton = document.getElementById("result-button");
         resultButton.addEventListener("click", () => {
-          const body = document.getElementById("benchmark-body")
-          body.setAttribute("id", "result-body")
-          displayHtml()
-        })
+          const body = document.getElementById("benchmark-body");
+          body.setAttribute("id", "result-body");
+          displayHtml();
+        });
 
-        return
+        return;
       }
 
-      const { question, correct_answer, incorrect_answers } = questionObj
-      const allAnswers = [...incorrect_answers, correct_answer]
+      const { question, correct_answer, incorrect_answers } = questionObj;
+      const allAnswers = [...incorrect_answers, correct_answer];
 
-      questionTitle.innerText = question
-      buttonSpace.innerHTML = ""
-      questionNumber++
+      questionTitle.innerText = question;
+      buttonSpace.innerHTML = "";
+      questionNumber++;
 
       getRandomAnswerOrder().forEach((index) => {
         buttonSpace.innerHTML += `
-          <button class="retro-btn button-answer">
-            ${allAnswers[index]}
-          </button>
-        `
-      })
-
-      const buttonAnswers = document.querySelectorAll(".button-answer")
+          <button class="retro-btn button-answer">${allAnswers[index]}</button>
+        `;
+      });
+      const buttonAnswers = document.querySelectorAll(".button-answer");
       buttonAnswers.forEach((button) => {
-        button.addEventListener("click", (e) => checkAnswer(e, questionObj))
-      })
+        button.addEventListener("click", (e) => checkAnswer(e, questionObj));
+      });
     }
 
-    displayHtml()
+    displayHtml();
   } else if (character === "Lisa") {
-    console.log("Lisa non ancora implementata")
+    console.log("Lisa non ancora implementata");
   }
 }
