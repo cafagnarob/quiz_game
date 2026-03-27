@@ -96,7 +96,7 @@ body::before {
 #welcome-body main {
   min-height: 67vh;
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-columns: repeat(1, minmax(220px, 1fr));
   grid-template-rows: 1fr auto;
   justify-items: center;
   align-items: end;
