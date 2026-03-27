@@ -44,6 +44,55 @@ form.addEventListener("submit", (e) => {
   character = document.getElementById("character").value;
   start();
 });
+<<<<<<< Updated upstream
+=======
+
+// seleccionar personaje
+nameButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    character = button.dataset.character
+    characterInput.value = character
+
+    nameButtons.forEach((btn) => btn.classList.remove("is-selected"))
+    girlCards.forEach((card) => card.classList.remove("active"))
+    document.querySelectorAll(".selectedGirl").forEach((girl) => {
+      girl.classList.remove("selectedGirl")
+    })
+
+    button.classList.add("is-selected")
+
+    const selectedName = document.getElementById(character)
+    if (selectedName) {
+      selectedName.classList.add("selectedGirl")
+    }
+
+    const selectedCard = document.querySelector(
+      `.tindermatch[data-character="${character}"]`,
+    )
+    if (selectedCard) {
+      selectedCard.classList.add("active")
+    }
+
+    console.log("Personaje seleccionado:", character)
+  })
+})
+
+// iniciar juego
+startBtn.addEventListener("click", () => {
+  if (!characterInput.value) {
+    alert("Seleziona una ragazza prima di iniziare")
+    return
+  }
+
+  character = characterInput.value
+  console.log("Iniciando juego con:", character)
+  start()
+})
+>>>>>>> 7c5b571 (fix)
+
+=======
+>>>>>>> a11a9df32ba702cb0bcfe4b81feb7bb7dd323e68
+>>>>>>> Stashed changes
 function start() {
   if (character === "Emma") {
     const main = document.querySelector("main");
