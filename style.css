@@ -678,7 +678,7 @@ header {
 }
 
 .bar-background {
-  background-image: url("./Girls1/BGbar.png") !important;
+  background-image: url("./assets/images/welcomeBgPixel.png") !important;
 }
 
 .hidden {
