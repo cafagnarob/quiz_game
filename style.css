@@ -8,8 +8,11 @@
 
 body {
   font-family: "Press Start 2P", system-ui;
-  min-height: 100vh;
+  height: 100dvh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -65,6 +68,7 @@ body::before {
 }
 
 .tindermatch {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -95,9 +99,9 @@ body::before {
 
 #welcome-body main {
   display: flex;
-
-  justify-content: space-between;
-  align-items: stretch;
+  height: 40%;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   padding: 20px;
 }
@@ -131,7 +135,8 @@ body::before {
 }
 
 #welcome-body .tindermatch img {
-  width: clamp(280px, 30vw, 430px);
+  width: fit-content;
+  height: 100%;
 }
 
 .selectedGirl {
@@ -302,7 +307,8 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  gap: 12px;
+  height: 25%;
 }
 
 .character-list {
@@ -668,7 +674,7 @@ body::before {
 } */
 
 header img {
-  width: 500px;
+  width: 20%;
 }
 
 header {
