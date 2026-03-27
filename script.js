@@ -356,7 +356,7 @@ function start() {
         sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
 
         if (score >= 3) {
-          sidebar.innerHTML += "<p>sta sera te la lancio</p>";
+          sidebar.innerHTML += "<p>sta sera te la do, una possibilità</p>";
         } else {
           sidebar.innerHTML += "<p>sparisci</p>";
         }
