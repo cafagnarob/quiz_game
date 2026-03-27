@@ -388,7 +388,6 @@ body::before {
   display: flex;
   align-items: end;
   justify-content: center;
-  background-image: url(./Girls1/BGbar.png);
   background-size: cover;
 }
 
