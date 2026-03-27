@@ -94,7 +94,7 @@ body::before {
    ========================= */
 
 #welcome-body main {
-  min-height: 100vh;
+  min-height: 67vh;
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
   grid-template-rows: 1fr auto;
@@ -375,7 +375,6 @@ body::before {
 
 #benchmark-body main,
 #result-body main {
-  min-height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -392,7 +391,7 @@ body::before {
 }
 
 #animazione img {
-  width: min(100%, 700px);
+  width: min(145%);
   max-height: 95vh;
   object-fit: contain;
   image-rendering: pixelated;
@@ -407,8 +406,6 @@ body::before {
   margin: 36px auto;
   background: rgba(245, 245, 245, 0.96);
   color: black;
-  padding: 28px 22px;
-  border: 6px solid black;
   box-shadow: 8px 8px 0 black;
 }
 
@@ -663,4 +660,14 @@ body::before {
     padding: 20px 14px;
     margin: 20px auto;
   }
+}
+
+header img {
+  width: 500px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
