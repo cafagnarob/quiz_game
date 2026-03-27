@@ -454,7 +454,7 @@ function start(girl) {
               </section>
 
               <section class="subtitle">
-                <h2>Instructions</h2>
+                <h2>${name}:</h2>
                 <p>
                   ${description}
                 </p>
