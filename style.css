@@ -8,6 +8,10 @@
 
 body {
   font-family: "Press Start 2P", system-ui;
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   color: white;
   background-size: cover;
@@ -15,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
+  height: 100dvh;
 }
 
 body::before {
@@ -65,7 +70,8 @@ body::before {
 }
 
 .tindermatch {
-  width: 100%;
+  width: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +81,7 @@ body::before {
 
 .tindermatch img {
   width: clamp(280px, 32vw, 430px);
-  height: auto;
+  height: 100%;
   display: block;
   image-rendering: pixelated;
 }
@@ -95,9 +101,10 @@ body::before {
 
 #welcome-body main {
   display: flex;
-
-  justify-content: space-between;
+  max-height: 43%;
+  justify-content: center;
   align-items: stretch;
+  margin-top: 2%;
   gap: 20px;
   padding: 20px;
 }
@@ -131,7 +138,7 @@ body::before {
 }
 
 #welcome-body .tindermatch img {
-  width: clamp(280px, 30vw, 430px);
+  width: fit-content;
 }
 
 .selectedGirl {
@@ -148,6 +155,7 @@ body::before {
 
 #welcome-body #character-choice {
   grid-column: 1 / 4;
+  height: 22%;
   grid-row: 2;
   width: min(840px, 88%);
   margin: 0 auto 10px;
@@ -157,7 +165,7 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  gap: 12px;
   border: 6px solid black;
   box-shadow: 8px 8px 0 black;
 }
@@ -668,7 +676,7 @@ body::before {
 } */
 
 header img {
-  width: 500px;
+  width: 25%;
 }
 
 header {
