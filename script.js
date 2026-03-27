@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 const select = document.getElementById("character");
 
+// === CÓDIGO INSERTADO: referencia a los botones visuales ===
+const visualButtons = document.querySelectorAll(".name-btn");
+// === FIN DEL CÓDIGO INSERTADO ===
+
 select.addEventListener("change", (e) => {
   document.querySelectorAll(".selectedGirl").forEach((girl) => {
     girl.classList.remove("selectedGirl");
@@ -17,6 +21,7 @@ const girlCards = document.querySelectorAll(".tindermatch")
 const startBtn = document.getElementById("start-btn")
 >>>>>>> 7c5b571 (fix)
 
+<<<<<<< HEAD
   // === CÓDIGO INSERTADO: sincroniza la selección visual del formulario ===
   document.querySelectorAll(".fake-option").forEach((option) => {
     option.classList.remove("active");
@@ -26,12 +31,28 @@ const startBtn = document.getElementById("start-btn")
     if (text === e.target.value.toLowerCase()) {
       option.classList.add("active");
       option.innerText = `▶ ${e.target.value}`;
+=======
+  // === CÓDIGO INSERTADO: sincroniza el botón visual seleccionado ===
+  visualButtons.forEach((btn) => {
+    if (btn.dataset.value === e.target.value) {
+      btn.classList.add("is-selected");
+>>>>>>> a11a9df32ba702cb0bcfe4b81feb7bb7dd323e68
     } else {
-      option.innerText = option.innerText.replace("▶", "").trim();
+      btn.classList.remove("is-selected");
     }
   });
   // === FIN DEL CÓDIGO INSERTADO ===
 });
+
+// === CÓDIGO INSERTADO: click en botones visuales ===
+visualButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const value = button.dataset.value;
+    select.value = value;
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+});
+// === FIN DEL CÓDIGO INSERTADO ===
 
 let character = "";
 
@@ -42,6 +63,7 @@ form.addEventListener("submit", (e) => {
   character = document.getElementById("character").value;
   start();
 });
+<<<<<<< HEAD
 =======
 // seleccionar personaje
 nameButtons.forEach((button) => {
@@ -86,6 +108,8 @@ startBtn.addEventListener("click", () => {
 })
 >>>>>>> 7c5b571 (fix)
 
+=======
+>>>>>>> a11a9df32ba702cb0bcfe4b81feb7bb7dd323e68
 function start() {
   console.log("start() ejecutada con:", character)
 
@@ -437,7 +461,7 @@ function start() {
         sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
 
         if (score >= 3) {
-          sidebar.innerHTML += "<p>sta sera te la lancio</p>";
+          sidebar.innerHTML += "<p>sta sera te la do, una possibilità</p>";
         } else {
           sidebar.innerHTML += "<p>sparisci</p>";
         }
