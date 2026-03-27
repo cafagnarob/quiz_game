@@ -402,10 +402,15 @@ function start() {
       <section id="button-space" type='submit'></section>
     </main> `
 
-        if (difficulty === "easy") {
-          arrQuestions = questionsGossip.filter(
-            (question, i) => i <= numOfQuestions,
-          )
+        const firstQuestion = randomQuestionExtraction()
+        displayNextQuestion(firstQuestion)
+      } else if (document.getElementById("result-body")) {
+        sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
+
+        if (score >= 3) {
+          sidebar.innerHTML += "<p>sta sera te la do, una possibilità</p>"
+        } else {
+          sidebar.innerHTML += "<p>sparisci</p>"
         }
 
         const primaDomanda = randomQuestionExtraction()
@@ -483,27 +488,3 @@ function start() {
   } else if (character === Lisa) {
   }
 }
-
-// const displayResults = () => {
-//   const correctPercentageP = document.getElementById(
-//     "percentage-correct-answers",
-//   )
-//   const resultMessage = document.getElementById("result-message")
-//   const wrongPercentageP = document.getElementById("percentage-wrong-answers")
-//   const correctAnswersP = document.getElementById("number-correct-answers")
-//   const wrongAnswersP = document.getElementById("number-wrong-answers")
-//   correctPercentageP.innerText = `${((score / numOfQuestions) * 100).toFixed(1)}%`
-//   wrongPercentageP.innerText = `${(((numOfQuestions - score) / numOfQuestions) * 100).toFixed(1)}%`
-//   correctAnswersP.innerText = `${score}/${numOfQuestions} questions`
-//   wrongAnswersP.innerText = `${numOfQuestions - score}/${numOfQuestions} questions`
-//   if (((score / numOfQuestions) * 100).toFixed(1) < 60) {
-//     resultMessage.innerHTML = `
-//     <h4>We're sorry!</h4>
-//     <p class="youPass">You didn't pass the exam this time.</p>
-//     <div class="certificate">
-//     <p>You can try again later!</p>
-//     <p>Check your email (including promotion / spam folder)</p>
-//     </div>
-//     `
-//   }
-// }
