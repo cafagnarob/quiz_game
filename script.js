@@ -326,7 +326,7 @@ const girls = [
 
     finalMessage: `Stasera ti studio approfonditamente...`,
   },
-];
+]
 
 //
 //
@@ -334,114 +334,115 @@ const girls = [
 //
 // First Page Logic
 
-const select = document.getElementById("character");
-const visualButtons = document.querySelectorAll(".name-btn");
+const select = document.getElementById("character")
+const visualButtons = document.querySelectorAll(".name-btn")
 
 select.addEventListener("change", (e) => {
   document.querySelectorAll(".selectedGirl").forEach((girl) => {
-    girl.classList.remove("selectedGirl");
-  });
+    girl.classList.remove("selectedGirl")
+  })
 
-  const selected = document.getElementById(e.target.value);
+  const selected = document.getElementById(e.target.value)
   if (selected) {
-    selected.classList.add("selectedGirl");
+    selected.classList.add("selectedGirl")
   }
 
   visualButtons.forEach((btn) => {
     if (btn.dataset.value === e.target.value) {
-      btn.classList.add("is-selected");
+      btn.classList.add("is-selected")
     } else {
-      btn.classList.remove("is-selected");
+      btn.classList.remove("is-selected")
     }
-  });
-});
+  })
+})
 
 visualButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const value = button.dataset.value;
-    select.value = value;
-    select.dispatchEvent(new Event("change", { bubbles: true }));
-  });
-});
+    const value = button.dataset.value
+    select.value = value
+    select.dispatchEvent(new Event("change", { bubbles: true }))
+  })
+})
 
-let character = "";
+let character = ""
 
-const form = document.getElementById("character-choice");
+const form = document.getElementById("character-choice")
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  character = document.getElementById("character").value;
-  const selected = girls.filter((girl) => girl.name === character);
-  const body = document.getElementById("welcome-body");
-  body.classList.add("bar-background");
-  start(selected[0]);
-});
+  e.preventDefault()
+  character = document.getElementById("character").value
+  const selected = girls.filter((girl) => girl.name === character)
+  const body = document.getElementById("welcome-body")
+  body.classList.add("bar-background")
+  start(selected[0])
+  form.classList.add("hidden")
+})
 function start(girl) {
-  const main = document.querySelector("main");
-  const { name, imgSrc, questions, description, finalMessage } = girl;
+  const main = document.querySelector("main")
+  const { name, imgSrc, questions, description, finalMessage } = girl
 
   main.innerHTML = `
       <section id="animazione">
         <img src='${imgSrc}' alt="" />
       </section>
       <div id="sidebar" class="pixel-border"></div>
-    `;
+    `
 
-  const sidebar = document.getElementById("sidebar");
+  const sidebar = document.getElementById("sidebar")
 
-  let score = 0;
-  let questionNumber = 0;
-  const numOfQuestions = 5;
-  let pulledQuestions = [];
-  let usedQuestionsArr = [];
-  let usedAnswersArr = [];
+  let score = 0
+  let questionNumber = 0
+  const numOfQuestions = 5
+  let pulledQuestions = []
+  let usedQuestionsArr = []
+  let usedAnswersArr = []
 
   function randomQuestionExtraction() {
     if (pulledQuestions.length === questions.length) {
-      return null;
+      return null
     }
 
-    let selectedQuestion;
+    let selectedQuestion
 
     do {
-      const randomIndex = Math.floor(Math.random() * questions.length);
-      selectedQuestion = questions[randomIndex];
-    } while (pulledQuestions.includes(selectedQuestion));
+      const randomIndex = Math.floor(Math.random() * questions.length)
+      selectedQuestion = questions[randomIndex]
+    } while (pulledQuestions.includes(selectedQuestion))
 
-    pulledQuestions.push(selectedQuestion);
-    return selectedQuestion;
+    pulledQuestions.push(selectedQuestion)
+    return selectedQuestion
   }
 
   function getRandomAnswerOrder() {
-    return [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+    return [0, 1, 2, 3].sort(() => Math.random() - 0.5)
   }
 
   function checkAnswer(e, questionObj) {
-    const { question, correct_answer } = questionObj;
-    const buttonAnswers = document.querySelectorAll(".button-answer");
+    const { question, correct_answer } = questionObj
+    const buttonAnswers = document.querySelectorAll(".button-answer")
 
     buttonAnswers.forEach((btn) => {
-      btn.disabled = true;
-      btn.style.cursor = "not-allowed";
-    });
+      btn.disabled = true
+      btn.style.cursor = "not-allowed"
+    })
 
     if (e.target.innerText.toLowerCase() === correct_answer.toLowerCase()) {
-      e.target.classList.add("correct-answer");
-      score++;
-      usedAnswersArr.push(`Your answer: ${correct_answer} ✅`);
+      e.target.classList.add("correct-answer")
+      score++
+      usedAnswersArr.push(`Your answer: ${correct_answer} ✅`)
     } else {
-      e.target.classList.add("wrong-answer");
+      e.target.classList.add("wrong-answer")
       usedAnswersArr.push(
         `Your answer: ${e.target.innerText} ❌ - Correct answer: ${correct_answer} ✅`,
-      );
+      )
     }
 
-    usedQuestionsArr.push(question);
+    usedQuestionsArr.push(question)
 
     setTimeout(() => {
-      const nextQuestion = randomQuestionExtraction();
-      displayNextQuestion(nextQuestion);
-    }, 550);
+      const nextQuestion = randomQuestionExtraction()
+      displayNextQuestion(nextQuestion)
+    }, 550)
   }
 
   function displayHtml() {
@@ -465,95 +466,95 @@ function start(girl) {
               </section>
             </form>
           </main>
-        `;
+        `
 
-      const welcomeForm = document.querySelector(".welcome-form");
+      const welcomeForm = document.querySelector(".welcome-form")
 
       welcomeForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const body = document.getElementById("welcome-body");
-        body.setAttribute("id", "benchmark-body");
-        displayHtml();
-      });
+        e.preventDefault()
+        const body = document.getElementById("welcome-body")
+        body.setAttribute("id", "benchmark-body")
+        displayHtml()
+      })
     } else if (document.getElementById("benchmark-body")) {
-      const body = document.getElementById("benchmark-body");
-      body.classList.add("bar-background");
+      const body = document.getElementById("benchmark-body")
+      body.classList.add("bar-background")
       sidebar.innerHTML = `
-          <main class="quiz-space">
+          <div class="quiz-space">
             <article id="question-display">
               <p id="question-title"></p>
             </article>
             <section id="button-space"></section>
-          </main>
-        `;
+          </div>
+        `
 
-      const firstQuestion = randomQuestionExtraction();
-      displayNextQuestion(firstQuestion);
+      const firstQuestion = randomQuestionExtraction()
+      displayNextQuestion(firstQuestion)
     } else if (document.getElementById("result-body")) {
-      const body = document.getElementById("result-body");
-      body.classList.add("bar-background");
-      sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
+      const body = document.getElementById("result-body")
+      body.classList.add("bar-background")
+      sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
 
       if (score >= 3) {
-        sidebar.innerHTML += `<p>${finalMessage}</p>`;
+        sidebar.innerHTML += `<p>${finalMessage}</p>`
       } else {
-        sidebar.innerHTML += "<p>sparisci</p>";
+        sidebar.innerHTML += "<p>sparisci</p>"
       }
 
-      sidebar.innerHTML += `<button class="retro-btn" id="try-again">🔥😉💋 puoi riprovarci</button>`;
+      sidebar.innerHTML += `<button class="retro-btn" id="try-again">🔥😉💋 puoi riprovarci</button>`
 
-      const tryAgain = document.getElementById("try-again");
+      const tryAgain = document.getElementById("try-again")
 
       tryAgain.addEventListener("click", () => {
-        const body = document.getElementById("result-body");
-        body.setAttribute("id", "welcome-body");
+        const body = document.getElementById("result-body")
+        body.setAttribute("id", "welcome-body")
 
-        score = 0;
-        questionNumber = 0;
-        pulledQuestions = [];
-        usedAnswersArr = [];
-        usedQuestionsArr = [];
+        score = 0
+        questionNumber = 0
+        pulledQuestions = []
+        usedAnswersArr = []
+        usedQuestionsArr = []
 
-        displayHtml();
-      });
+        displayHtml()
+      })
     }
   }
 
   function displayNextQuestion(questionObj) {
-    const buttonSpace = document.getElementById("button-space");
-    const questionTitle = document.getElementById("question-title");
+    const buttonSpace = document.getElementById("button-space")
+    const questionTitle = document.getElementById("question-title")
 
     if (!questionObj || questionNumber >= numOfQuestions) {
-      questionTitle.innerText = "The Quiz is over.\nGo to your results!";
-      buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">Results</button>`;
+      questionTitle.innerText = "The Quiz is over.\nGo to your results!"
+      buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">Results</button>`
 
-      const resultButton = document.getElementById("result-button");
+      const resultButton = document.getElementById("result-button")
       resultButton.addEventListener("click", () => {
-        const body = document.getElementById("benchmark-body");
-        body.setAttribute("id", "result-body");
-        displayHtml();
-      });
+        const body = document.getElementById("benchmark-body")
+        body.setAttribute("id", "result-body")
+        displayHtml()
+      })
 
-      return;
+      return
     }
 
-    const { question, correct_answer, incorrect_answers } = questionObj;
-    const allAnswers = [...incorrect_answers, correct_answer];
+    const { question, correct_answer, incorrect_answers } = questionObj
+    const allAnswers = [...incorrect_answers, correct_answer]
 
-    questionTitle.innerText = question;
-    buttonSpace.innerHTML = "";
-    questionNumber++;
+    questionTitle.innerText = question
+    buttonSpace.innerHTML = ""
+    questionNumber++
 
     getRandomAnswerOrder().forEach((index) => {
       buttonSpace.innerHTML += `
           <button class="retro-btn button-answer">${allAnswers[index]}</button>
-        `;
-    });
-    const buttonAnswers = document.querySelectorAll(".button-answer");
+        `
+    })
+    const buttonAnswers = document.querySelectorAll(".button-answer")
     buttonAnswers.forEach((button) => {
-      button.addEventListener("click", (e) => checkAnswer(e, questionObj));
-    });
+      button.addEventListener("click", (e) => checkAnswer(e, questionObj))
+    })
   }
 
-  displayHtml();
+  displayHtml()
 }
