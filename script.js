@@ -429,6 +429,12 @@ function start(girl) {
 
     if (e.target.innerText.toLowerCase() === correct_answer.toLowerCase()) {
       e.target.classList.add("correct-answer");
+      const emptyHeart = document.querySelectorAll(".empty-heart");
+      const fullHeart = document.querySelectorAll(".full-heart");
+      if (emptyHeart[score]) {
+        emptyHeart[score].classList.add("hidden");
+        fullHeart[score].classList.remove("hidden");
+      }
       score++;
       usedAnswersArr.push(`Your answer: ${correct_answer} ✅`);
     } else {
@@ -590,6 +596,58 @@ function start(girl) {
               <p id="question-title"></p>
             </article>
             <section id="button-space"></section>
+            <section id="hearts">
+            <img
+            class="full-heart hidden"
+            src="/assets/images/cuore_pieno.png"
+            alt="Heart1"
+            />
+            <img
+            class="full-heart hidden"
+            src="/assets/images/cuore_pieno.png"
+            alt="Heart2"
+            />
+            <img
+            class="full-heart hidden"
+            src="/assets/images/cuore_pieno.png"
+            alt="Heart3"
+            />
+            <img
+            class="full-heart hidden"
+            src="/assets/images/cuore_pieno.png"
+            alt="Heart4"
+            />
+            <img
+            class="full-heart hidden"
+            src="/assets/images/cuore_pieno.png"
+            alt="Heart5"
+            />
+            <img
+                class="empty-heart"
+                src="/assets/images/cuore_vuoto.png"
+                alt="emptyHeart1"
+             />
+            <img
+            class="empty-heart"
+            src="/assets/images/cuore_vuoto.png"
+            alt="emptyHeart2"
+            />
+            <img
+            class="empty-heart"
+            src="/assets/images/cuore_vuoto.png"
+            alt="emptyHeart3"
+            />
+            <img
+                class="empty-heart"
+                src="/assets/images/cuore_vuoto.png"
+                alt="emptyHeart4"
+             />
+            <img
+                class="empty-heart"
+                src="/assets/images/cuore_vuoto.png"
+                alt="emptyHeart5"
+             />
+            </section>
           </div>
         `;
 

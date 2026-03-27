@@ -509,6 +509,22 @@ body::before {
   background-color: #dd34;
 }
 
+#hearts {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.full-heart {
+  width: 10%;
+}
+
+.empty-heart {
+  width: 10%;
+}
+
 /* =========================
    RESPONSIVE
    ========================= */
