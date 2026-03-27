@@ -506,6 +506,7 @@ body::before {
 }
 
 #welcome-body {
+  background-image: url(./assets/images/step\ 1.png);
   background-color: #dd34;
 }
 
@@ -712,6 +713,7 @@ header {
 }
 
 .entrypage-body {
+  background-image: url(./assets/images/step\ 1.png);
   display: flex;
   flex-direction: column;
   background-color: #dd34;
