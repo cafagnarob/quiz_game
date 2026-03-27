@@ -684,3 +684,16 @@ header {
 .hidden {
   display: none !important;
 }
+
+.entrypage-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #dd34;
+  align-items: center;
+  justify-content: center;
+}
+
+.entrypage-body img {
+  width: 55%;
+  margin: 0 auto;
+}
