@@ -18,21 +18,81 @@ body {
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-=======
-/* capa suave para mejorar legibilidad */
->>>>>>> 7c5b571 (fix)
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.1);
   z-index: -1;
 }
 
 /* =========================
-   PANTALLA INICIAL
+   COMPONENTI RIUTILIZZABILI
+   ========================= */
+
+.pixel-border {
+  border: 6px solid black;
+  box-shadow: 8px 8px 0 black;
+}
+
+.retro-btn,
+.retro-box-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+  line-height: 1.5;
+  padding: 14px 18px;
+  border: 4px solid black;
+  background: #f5f5f5;
+  color: black;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 5px 5px 0 black;
+}
+
+.retro-btn:hover,
+.retro-btn:focus-visible,
+.retro-box-btn:hover,
+.retro-box-btn:focus-visible {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.retro-btn:active,
+.retro-box-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 black;
+}
+
+.tindermatch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+
+.tindermatch img {
+  width: clamp(280px, 32vw, 430px);
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 0 black);
+}
+
+.tindermatch::after {
+  content: "";
+  width: min(82%, 340px);
+  height: 8px;
+  background: black;
+  display: block;
+  margin-top: -4px;
+}
+
+/* =========================
+   WELCOME SCREEN
    ========================= */
 
 #welcome-body main {
@@ -46,15 +106,6 @@ body::before {
   padding: 18px 20px 18px;
   max-width: 1500px;
   margin: 0 auto;
-}
-
-#welcome-body .tindermatch {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  position: relative;
 }
 
 #welcome-body .tindermatch:nth-of-type(1) {
@@ -87,19 +138,6 @@ body::before {
 
 #welcome-body .tindermatch img {
   width: clamp(280px, 30vw, 430px);
-  height: auto;
-  display: block;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 8px 0 black);
-}
-
-#welcome-body .tindermatch::after {
-  content: "";
-  width: min(82%, 340px);
-  height: 8px;
-  background: black;
-  display: block;
-  margin-top: -4px;
 }
 
 .selectedGirl {
@@ -114,7 +152,6 @@ body::before {
     0 0 16px #ffe45c;
 }
 
-/* PANEL */
 #welcome-body #character-choice {
   grid-column: 1 / 4;
   grid-row: 2;
@@ -139,7 +176,6 @@ body::before {
   color: black;
 }
 
-/* selector visual */
 .fake-selector {
   display: flex;
   justify-content: center;
@@ -170,8 +206,8 @@ body::before {
   top: 0;
 }
 
-/* ocultamos el select real pero sigue funcionando para JS */
-#welcome-body #character-choice select {
+#welcome-body #character-choice select,
+#character {
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -179,7 +215,6 @@ body::before {
   height: 1px;
 }
 
-/* botón */
 #welcome-body #character-choice > button {
   font-family: "Press Start 2P", system-ui;
   font-size: clamp(0.85rem, 1vw, 1rem);
@@ -207,128 +242,9 @@ body::before {
 }
 
 /* =========================
-   QUIZ / RESULT
+   GAME / QUIZ / RESULT
    ========================= */
 
-main {
-  display: flex;
-  flex-direction: row;
-}
-
-#benchmark-body main,
-#result-body main {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 20px;
-  padding: 20px;
-}
-
-#animazione {
-  flex: 1;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-}
-
-#animazione img {
-  width: min(100%, 700px);
-  max-height: 95vh;
-  object-fit: contain;
-  image-rendering: pixelated;
-}
-
-.pixel-border,
-#sidebar {
-  width: min(92vw, 860px);
-  min-height: 70vh;
-  margin: 36px auto;
-  background: rgba(245, 245, 245, 0.96);
-  color: black;
-  padding: 28px 22px;
-  border: 6px solid black;
-  box-shadow: 8px 8px 0 black;
-}
-
-#benchmark-body #sidebar,
-#result-body #sidebar {
-  width: min(48vw, 860px);
-  min-height: calc(100vh - 72px);
-  margin: 0;
-}
-
-.welcome-form {
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-}
-
-.welcome-form .title,
-.welcome-form .subtitle {
-  width: 100%;
-  text-align: center;
-}
-
-.welcome-form .title h1 {
-  font-size: clamp(0.95rem, 1.2vw, 1.25rem);
-  line-height: 1.8;
-}
-
-.welcome-form .subtitle h2 {
-  font-size: clamp(0.85rem, 1vw, 1rem);
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-.welcome-form .subtitle p {
-  font-size: clamp(0.72rem, 0.92vw, 0.9rem);
-  line-height: 1.9;
-}
-
-.retro-btn {
-  font-family: "Press Start 2P", system-ui;
-  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
-  line-height: 1.5;
-  padding: 14px 18px;
-  border: 4px solid black;
-  background: #f5f5f5;
-  color: black;
-  cursor: pointer;
-  text-transform: uppercase;
-  text-align: center;
-  box-shadow: 5px 5px 0 black;
-}
-
-.retro-btn:hover,
-.retro-btn:focus-visible {
-  background: black;
-  color: white;
-  outline: none;
-}
-
-.retro-btn:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 black;
-}
-
-.quiz-space {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-=======
-  background: rgba(0, 0, 0, 0.14);
-  z-index: -1;
-}
-
-/* PANTALLA PRINCIPAL */
 .game-screen {
   min-height: 100vh;
   display: flex;
@@ -338,7 +254,6 @@ main {
   padding: 18px 20px 14px;
 }
 
-/* ESCENARIO DE PERSONAJES */
 .girls-stage {
   flex: 1;
   width: 100%;
@@ -350,15 +265,6 @@ main {
   justify-items: center;
   gap: 8px;
   padding: 0 8px;
-}
-
-.tindermatch {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  position: relative;
 }
 
 .girl-name {
@@ -374,25 +280,6 @@ main {
     2px 2px black;
 }
 
-.tindermatch img {
-  width: clamp(280px, 32vw, 430px);
-  height: auto;
-  display: block;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 8px 0 black);
-}
-
-/* plataforma debajo de cada personaje */
-.tindermatch::after {
-  content: "";
-  width: min(82%, 340px);
-  height: 8px;
-  background: black;
-  display: block;
-  margin-top: -4px;
-}
-
-/* PERSONAJE SELECCIONADO */
 .tindermatch.active .girl-name {
   color: #ffe45c;
 }
@@ -401,18 +288,12 @@ main {
   transform: translateY(-2px);
 }
 
-/* PANEL INFERIOR */
 .selector-panel {
   width: min(980px, 92%);
   margin: 0 auto;
   background: rgba(245, 245, 245, 0.96);
   color: black;
   padding: 22px 28px 20px;
-}
-
-.pixel-border {
-  border: 6px solid black;
-  box-shadow: 8px 8px 0 black;
 }
 
 .selector-title {
@@ -439,7 +320,6 @@ main {
   gap: 18px 34px;
 }
 
-/* BOTONES TEXTO RETRO */
 .name-btn,
 .retro-text-btn {
   font-family: "Press Start 2P", system-ui;
@@ -490,44 +370,37 @@ main {
   transform: translateY(2px);
 }
 
-/* START más visible */
 .start-btn {
   min-width: 170px;
   padding: 12px 16px;
 }
 
-/* BOTONES RECTANGULARES RETRO PARA OTRAS PANTALLAS */
-.retro-btn,
-.retro-box-btn {
-  font-family: "Press Start 2P", system-ui;
-  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
-  line-height: 1.5;
-  padding: 14px 18px;
-  border: 4px solid black;
-  background: #f5f5f5;
-  color: black;
-  cursor: pointer;
-  text-transform: uppercase;
-  text-align: center;
-  box-shadow: 5px 5px 0 black;
+#benchmark-body main,
+#result-body main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px;
 }
 
-.retro-btn:hover,
-.retro-btn:focus-visible,
-.retro-box-btn:hover,
-.retro-box-btn:focus-visible {
-  background: black;
-  color: white;
-  outline: none;
+#animazione {
+  flex: 1;
+  display: flex;
+  align-items: end;
+  justify-content: center;
 }
 
-.retro-btn:active,
-.retro-box-btn:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 black;
+#animazione img {
+  width: min(100%, 700px);
+  max-height: 95vh;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
-/* QUIZ / PANTALLAS BLANCAS */
+#sidebar,
 .quiz-space,
 .end-screen,
 .result-screen {
@@ -541,20 +414,64 @@ main {
   box-shadow: 8px 8px 0 black;
 }
 
->>>>>>> 7c5b571 (fix)
+#benchmark-body #sidebar,
+#result-body #sidebar {
+  width: min(48vw, 860px);
+  min-height: calc(100vh - 72px);
+  margin: 0;
+}
+
+.quiz-space {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.welcome-form {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.welcome-form .title,
+.welcome-form .subtitle {
+  width: 100%;
+  text-align: center;
+}
+
+.welcome-form .title h1 {
+  font-size: clamp(0.95rem, 1.2vw, 1.25rem);
+  line-height: 1.8;
+}
+
+.welcome-form .subtitle h2 {
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.welcome-form .subtitle p,
+#result-body #sidebar p {
+  font-size: clamp(0.72rem, 0.92vw, 0.9rem);
+  line-height: 1.9;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
 #question-display,
 #question-diplay {
   text-align: center;
   font-size: clamp(0.8rem, 1.05vw, 1rem);
   line-height: 1.8;
   margin-bottom: 30px;
-<<<<<<< HEAD
 }
 
 #question-title {
   line-height: 1.9;
-=======
->>>>>>> 7c5b571 (fix)
 }
 
 #button-space {
@@ -565,13 +482,13 @@ main {
   width: 100%;
   margin-top: 30px;
 }
-<<<<<<< HEAD
 
-#result-body #sidebar p {
+.end-screen h1,
+.result-screen h1 {
   text-align: center;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
   line-height: 1.8;
-  margin-bottom: 18px;
-  font-size: clamp(0.78rem, 1vw, 0.95rem);
+  margin-bottom: 22px;
 }
 
 .correct-answer {
@@ -580,6 +497,24 @@ main {
 
 .wrong-answer {
   color: rgba(255, 0, 0, 0.7);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1200px) {
+  .girls-stage {
+    gap: 6px;
+  }
+
+  .tindermatch img {
+    width: clamp(240px, 29vw, 360px);
+  }
+
+  .selector-panel {
+    width: min(900px, 94%);
+  }
 }
 
 @media (max-width: 900px) {
@@ -597,36 +532,12 @@ main {
     font-size: clamp(0.72rem, 1vw, 0.95rem);
   }
 
-  #welcome-body #character-choice {
-=======
-<<<<<<< Updated upstream
-=======
-
-.end-screen h1,
-.result-screen h1 {
-  text-align: center;
-  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
-  line-height: 1.8;
-  margin-bottom: 22px;
-}
-
-/* TABLET */
-@media (max-width: 1200px) {
-  .girls-stage {
-    gap: 6px;
-  }
-
-  .tindermatch img {
-    width: clamp(240px, 29vw, 360px);
-  }
-
+  #welcome-body #character-choice,
   .selector-panel {
-    width: min(900px, 94%);
+    width: 96%;
+    padding: 18px 16px;
   }
-}
 
-/* TABLET PEQUEÑA */
-@media (max-width: 900px) {
   .game-screen {
     padding: 14px 14px 18px;
   }
@@ -637,21 +548,24 @@ main {
     padding: 0;
   }
 
-  .tindermatch img {
-    width: clamp(170px, 27vw, 270px);
-  }
-
   .girl-name {
     font-size: clamp(0.72rem, 1vw, 0.95rem);
   }
 
-  .selector-panel {
->>>>>>> 7c5b571 (fix)
-    width: 96%;
-    padding: 18px 16px;
+  .selector-title {
+    margin-bottom: 18px;
   }
 
-<<<<<<< HEAD
+  .character-list {
+    gap: 14px 20px;
+  }
+
+  .name-btn,
+  .retro-text-btn {
+    font-size: 0.78rem;
+    padding: 8px 10px;
+  }
+
   #benchmark-body main,
   #result-body main {
     flex-direction: column;
@@ -675,32 +589,10 @@ main {
     grid-template-rows: auto auto auto auto;
     justify-items: center;
     align-items: center;
-=======
-  .selector-title {
-    margin-bottom: 18px;
-  }
-
-  .character-list {
-    gap: 14px 20px;
-  }
-
-  .name-btn,
-  .retro-text-btn {
-    font-size: 0.78rem;
-    padding: 8px 10px;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-  .game-screen {
-    justify-content: flex-start;
->>>>>>> 7c5b571 (fix)
     gap: 18px;
     padding: 12px;
   }
 
-<<<<<<< HEAD
   #welcome-body .tindermatch:nth-of-type(1),
   #welcome-body .tindermatch:nth-of-type(2),
   #welcome-body .tindermatch:nth-of-type(3),
@@ -709,44 +601,38 @@ main {
     grid-row: auto;
   }
 
-  #welcome-body .tindermatch img {
+  #welcome-body .tindermatch img,
+  .tindermatch img {
     width: min(72vw, 290px);
   }
 
-  #welcome-body .tindermatch p {
-=======
+  #welcome-body .tindermatch p,
+  .girl-name {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+
+  .game-screen {
+    justify-content: flex-start;
+    gap: 18px;
+    padding: 12px;
+  }
+
   .girls-stage {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .tindermatch img {
-    width: min(72vw, 290px);
-  }
-
-  .girl-name {
->>>>>>> 7c5b571 (fix)
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-  }
-
-<<<<<<< HEAD
-  #welcome-body #character-choice {
-=======
+  #welcome-body #character-choice,
   .selector-panel {
->>>>>>> 7c5b571 (fix)
     width: 100%;
     padding: 16px 12px;
   }
 
-<<<<<<< HEAD
   .fake-selector {
     gap: 18px;
   }
 
-  .pixel-border,
-  #sidebar {
-=======
   .selector-title {
     font-size: 0.88rem;
   }
@@ -764,89 +650,19 @@ main {
     font-size: 0.72rem;
   }
 
-  .start-btn {
+  .start-btn,
+  .retro-btn,
+  .retro-box-btn {
     width: 100%;
-    max-width: 260px;
+    max-width: 280px;
   }
 
+  #sidebar,
   .quiz-space,
   .end-screen,
   .result-screen {
->>>>>>> 7c5b571 (fix)
     width: calc(100vw - 24px);
     padding: 20px 14px;
     margin: 20px auto;
   }
-
-<<<<<<< HEAD
-  .retro-btn {
-=======
-  .retro-btn,
-  .retro-box-btn {
->>>>>>> 7c5b571 (fix)
-    width: 100%;
-    max-width: 280px;
-  }
 }
-<<<<<<< HEAD
-.character-list {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px 34px;
-  flex-wrap: wrap;
-}
-
-.name-btn {
-  font-family: "Press Start 2P", system-ui;
-  font-size: clamp(0.85rem, 1vw, 1rem);
-  background: transparent;
-  border: none;
-  color: black;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 12px;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-.name-btn .arrow {
-  opacity: 0;
-  transform: translateX(-4px);
-  transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
-}
-
-.name-btn:hover .arrow,
-.name-btn:focus-visible .arrow,
-.name-btn.is-selected .arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.name-btn:hover,
-.name-btn:focus-visible,
-.name-btn.is-selected {
-  background: black;
-  color: white;
-  outline: none;
-}
-
-.name-btn:active {
-  transform: translateY(2px);
-}
-
-/* el select real queda oculto pero sigue funcionando para JS */
-#character {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-=======
->>>>>>> Stashed changes
->>>>>>> 7c5b571 (fix)
