@@ -8,32 +8,53 @@
   </head>
   <body id="welcome-body">
     <header></header>
+
     <main>
       <form action="" id="character-choice">
-        <label for="character"> scegli il tuo match</label>
+        <label for="character">scegli il tuo match</label>
+
+        <div class="character-list">
+          <button type="button" class="name-btn" data-value="Emma">
+            <span class="arrow">▶</span>
+            <span>Emma</span>
+          </button>
+
+          <button type="button" class="name-btn" data-value="Lisa">
+            <span class="arrow">▶</span>
+            <span>Lisa</span>
+          </button>
+
+          <button type="button" class="name-btn" data-value="Anna">
+            <span class="arrow">▶</span>
+            <span>Anna</span>
+          </button>
+        </div>
+
         <select name="character" id="character">
           <option value="Emma">Emma</option>
           <option value="Lisa">Lisa</option>
           <option value="Anna">Anna</option>
         </select>
-        <button>start</button>
+
+        <button type="submit">start</button>
       </form>
+
       <div class="tindermatch">
-        <p id="Emma">Emma</p>
+        <p id="Emma" class="selectedGirl">Emma</p>
         <img src="./Girls1/Girls1.GIF" alt="Emma_gif" />
       </div>
+
       <div class="tindermatch">
         <p id="Lisa">Lisa</p>
-        <img
-          src="./Girls1/Girl3/9d08d5ee-a046-45de-a04f-b4c51db22eec.png"
-          alt="Emma_gif"
-        />
+        <img src="./Girls1/Girls1.GIF" alt="Lisa_gif" />
       </div>
+
       <div class="tindermatch">
         <p id="Anna">Anna</p>
-        <img src="./Girls1/Girl2/girl2.png" alt="Emma_gif" />
+        <img src="./Girls1/Girls1.GIF" alt="Anna_gif" />
       </div>
     </main>
+
     <footer></footer>
     <script src="script.js"></script>
   </body>

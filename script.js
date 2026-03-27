@@ -1,33 +1,60 @@
-// DOM Elements Declarations
-// ciaone
+const select = document.getElementById("character")
+
+// === CÓDIGO INSERTADO: referencia a los botones visuales ===
+const visualButtons = document.querySelectorAll(".name-btn")
+// === FIN DEL CÓDIGO INSERTADO ===
 
 const select = document.getElementById("character")
 select.addEventListener("change", (e) => {
-  const arrSelected = document.querySelectorAll(".selectedGirl")
-  arrSelected.forEach((girl) => {
+  document.querySelectorAll(".selectedGirl").forEach((girl) => {
     girl.classList.remove("selectedGirl")
   })
-  const name = document.getElementById(`${e.target.value}`)
-  name.classList.add("selectedGirl")
+
+  const selected = document.getElementById(e.target.value)
+  if (selected) {
+    selected.classList.add("selectedGirl")
+  }
+
+  // === CÓDIGO INSERTADO: sincroniza el botón visual seleccionado ===
+  visualButtons.forEach((btn) => {
+    if (btn.dataset.value === e.target.value) {
+      btn.classList.add("is-selected")
+    } else {
+      btn.classList.remove("is-selected")
+    }
+  })
+  // === FIN DEL CÓDIGO INSERTADO ===
 })
 
+// === CÓDIGO INSERTADO: click en botones visuales ===
+visualButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const value = button.dataset.value
+    select.value = value
+    select.dispatchEvent(new Event("change", { bubbles: true }))
+  })
+})
+// === FIN DEL CÓDIGO INSERTADO ===
+
 let character = ""
+
 const form = document.getElementById("character-choice")
+
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   character = document.getElementById("character").value
   start()
 })
-const start = function () {
+function start() {
   if (character === "Emma") {
     const main = document.querySelector("main")
-    main.innerHTML = `<section id="animazione">
+
+    main.innerHTML = `
+      <section id="animazione">
         <img src="./Girls1/Girls1.GIF" alt="" />
       </section>
-      <div id="sidebar" class="pixel-border">
-        <section id="domande">domande</section>
-        <section id="risposte">risposte</section>
-      </div>`
+      <div id="sidebar" class="pixel-border"></div>
+    `
 
     const questionsGossip = [
       {
