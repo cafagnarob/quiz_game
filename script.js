@@ -117,6 +117,8 @@ const girls = [
     ],
     description: `"Amo stare dove succedono le cose: tra un red carpet e l'aperitivo più esclusivo in città. Se non è di tendenza o non è su Instagram, probabilmente non mi interessa.
                    Spero che tu abbia scelto il posto giusto per il nostro appuntamento!"`,
+
+    finalMessage: `Stasera te la do... una possibilità`,
   },
 
   {
@@ -221,7 +223,7 @@ const girls = [
     description: `"Preferisco il fascino delle ombre e del cinema horror alla noia della luce del sole. Cerco qualcuno che non abbia paura di esplorare il lato oscuro della bellezza insieme a me. 
                   Dimmi, hai mai letto qualcosa di veramente inquietante?"`,
 
-    finalMessage: `stasera te la do... una possibilità`,
+    finalMessage: `Stasera ti estraggo l'anima...`,
   },
 
   {
@@ -321,6 +323,8 @@ const girls = [
     ],
     description: `"Passo la maggior parte del mio tempo tra i libri e i corridoi dei musei; la curiosità è la mia guida. Se vuoi davvero conquistarmi, stimola la mia mente con una conversazione brillante. 
                   L'intelligenza è l'unica cosa che mi affascina davvero."`,
+
+    finalMessage: `Stasera ti studio approfonditamente...`,
   },
 ];
 
@@ -368,6 +372,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   character = document.getElementById("character").value;
   const selected = girls.filter((girl) => girl.name === character);
+  const body = document.getElementById("welcome-body");
+  body.classList.add("bar-background");
   start(selected[0]);
 });
 function start(girl) {
@@ -470,6 +476,8 @@ function start(girl) {
         displayHtml();
       });
     } else if (document.getElementById("benchmark-body")) {
+      const body = document.getElementById("benchmark-body");
+      body.classList.add("bar-background");
       sidebar.innerHTML = `
           <main class="quiz-space">
             <article id="question-display">
@@ -482,6 +490,8 @@ function start(girl) {
       const firstQuestion = randomQuestionExtraction();
       displayNextQuestion(firstQuestion);
     } else if (document.getElementById("result-body")) {
+      const body = document.getElementById("result-body");
+      body.classList.add("bar-background");
       sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
 
       if (score >= 3) {
