@@ -567,7 +567,7 @@ function start(girl) {
               </section>
 
               <section >
-                <button class="retro-btn" id="button-proceed" type="submit">Proceed</button>
+                <button class="retro-btn" id="button-proceed" type="submit">Senti, ma...</button>
               </section>
             </form>
           </main>
