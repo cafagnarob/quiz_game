@@ -10,7 +10,6 @@ body {
   font-family: "Press Start 2P", system-ui;
   min-height: 100vh;
   color: white;
-  background-image: url("./assets/images/barretro.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,7 +78,6 @@ body::before {
   height: auto;
   display: block;
   image-rendering: pixelated;
-  filter: drop-shadow(0 8px 0 black);
 }
 
 .tindermatch::after {
