@@ -671,3 +671,7 @@ header {
   flex-direction: row;
   justify-content: center;
 }
+
+.bar-background {
+  background-image: url("./Girls1/BGbar.png") !important;
+}
