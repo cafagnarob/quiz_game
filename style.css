@@ -18,10 +18,15 @@ body {
   overflow-x: hidden;
 }
 
+<<<<<<< HEAD
+=======
+/* capa suave para mejorar legibilidad */
+>>>>>>> 7c5b571 (fix)
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.1);
   z-index: -1;
 }
@@ -318,16 +323,238 @@ main {
   justify-content: flex-start;
 }
 
+=======
+  background: rgba(0, 0, 0, 0.14);
+  z-index: -1;
+}
+
+/* PANTALLA PRINCIPAL */
+.game-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px 14px;
+}
+
+/* ESCENARIO DE PERSONAJES */
+.girls-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  align-items: end;
+  justify-items: center;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.tindermatch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+
+.girl-name {
+  margin-bottom: 10px;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  color: white;
+  line-height: 1.2;
+  text-shadow:
+    3px 0 black,
+    -3px 0 black,
+    0 3px black,
+    0 -3px black,
+    2px 2px black;
+}
+
+.tindermatch img {
+  width: clamp(280px, 32vw, 430px);
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 0 black);
+}
+
+/* plataforma debajo de cada personaje */
+.tindermatch::after {
+  content: "";
+  width: min(82%, 340px);
+  height: 8px;
+  background: black;
+  display: block;
+  margin-top: -4px;
+}
+
+/* PERSONAJE SELECCIONADO */
+.tindermatch.active .girl-name {
+  color: #ffe45c;
+}
+
+.tindermatch.active img {
+  transform: translateY(-2px);
+}
+
+/* PANEL INFERIOR */
+.selector-panel {
+  width: min(980px, 92%);
+  margin: 0 auto;
+  background: rgba(245, 245, 245, 0.96);
+  color: black;
+  padding: 22px 28px 20px;
+}
+
+.pixel-border {
+  border: 6px solid black;
+  box-shadow: 8px 8px 0 black;
+}
+
+.selector-title {
+  text-align: center;
+  font-size: clamp(0.95rem, 1.15vw, 1.35rem);
+  line-height: 1.5;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+#character-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.character-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px 34px;
+}
+
+/* BOTONES TEXTO RETRO */
+.name-btn,
+.retro-text-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.name-btn .arrow,
+.retro-text-btn .arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.name-btn:hover .arrow,
+.name-btn:focus-visible .arrow,
+.name-btn.is-selected .arrow,
+.retro-text-btn:hover .arrow,
+.retro-text-btn:focus-visible .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.name-btn:hover,
+.name-btn:focus-visible,
+.name-btn.is-selected,
+.retro-text-btn:hover,
+.retro-text-btn:focus-visible {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.name-btn:active,
+.retro-text-btn:active {
+  transform: translateY(2px);
+}
+
+/* START más visible */
+.start-btn {
+  min-width: 170px;
+  padding: 12px 16px;
+}
+
+/* BOTONES RECTANGULARES RETRO PARA OTRAS PANTALLAS */
+.retro-btn,
+.retro-box-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+  line-height: 1.5;
+  padding: 14px 18px;
+  border: 4px solid black;
+  background: #f5f5f5;
+  color: black;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 5px 5px 0 black;
+}
+
+.retro-btn:hover,
+.retro-btn:focus-visible,
+.retro-box-btn:hover,
+.retro-box-btn:focus-visible {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+.retro-btn:active,
+.retro-box-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 black;
+}
+
+/* QUIZ / PANTALLAS BLANCAS */
+.quiz-space,
+.end-screen,
+.result-screen {
+  width: min(92vw, 860px);
+  min-height: 70vh;
+  margin: 36px auto;
+  background: rgba(245, 245, 245, 0.96);
+  color: black;
+  padding: 28px 22px;
+  border: 6px solid black;
+  box-shadow: 8px 8px 0 black;
+}
+
+>>>>>>> 7c5b571 (fix)
 #question-display,
 #question-diplay {
   text-align: center;
   font-size: clamp(0.8rem, 1.05vw, 1rem);
   line-height: 1.8;
   margin-bottom: 30px;
+<<<<<<< HEAD
 }
 
 #question-title {
   line-height: 1.9;
+=======
+>>>>>>> 7c5b571 (fix)
 }
 
 #button-space {
@@ -338,6 +565,7 @@ main {
   width: 100%;
   margin-top: 30px;
 }
+<<<<<<< HEAD
 
 #result-body #sidebar p {
   text-align: center;
@@ -370,10 +598,60 @@ main {
   }
 
   #welcome-body #character-choice {
+=======
+<<<<<<< Updated upstream
+=======
+
+.end-screen h1,
+.result-screen h1 {
+  text-align: center;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+/* TABLET */
+@media (max-width: 1200px) {
+  .girls-stage {
+    gap: 6px;
+  }
+
+  .tindermatch img {
+    width: clamp(240px, 29vw, 360px);
+  }
+
+  .selector-panel {
+    width: min(900px, 94%);
+  }
+}
+
+/* TABLET PEQUEÑA */
+@media (max-width: 900px) {
+  .game-screen {
+    padding: 14px 14px 18px;
+  }
+
+  .girls-stage {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 2px;
+    padding: 0;
+  }
+
+  .tindermatch img {
+    width: clamp(170px, 27vw, 270px);
+  }
+
+  .girl-name {
+    font-size: clamp(0.72rem, 1vw, 0.95rem);
+  }
+
+  .selector-panel {
+>>>>>>> 7c5b571 (fix)
     width: 96%;
     padding: 18px 16px;
   }
 
+<<<<<<< HEAD
   #benchmark-body main,
   #result-body main {
     flex-direction: column;
@@ -397,10 +675,32 @@ main {
     grid-template-rows: auto auto auto auto;
     justify-items: center;
     align-items: center;
+=======
+  .selector-title {
+    margin-bottom: 18px;
+  }
+
+  .character-list {
+    gap: 14px 20px;
+  }
+
+  .name-btn,
+  .retro-text-btn {
+    font-size: 0.78rem;
+    padding: 8px 10px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .game-screen {
+    justify-content: flex-start;
+>>>>>>> 7c5b571 (fix)
     gap: 18px;
     padding: 12px;
   }
 
+<<<<<<< HEAD
   #welcome-body .tindermatch:nth-of-type(1),
   #welcome-body .tindermatch:nth-of-type(2),
   #welcome-body .tindermatch:nth-of-type(3),
@@ -414,31 +714,81 @@ main {
   }
 
   #welcome-body .tindermatch p {
+=======
+  .girls-stage {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .tindermatch img {
+    width: min(72vw, 290px);
+  }
+
+  .girl-name {
+>>>>>>> 7c5b571 (fix)
     margin-bottom: 8px;
     font-size: 0.9rem;
   }
 
+<<<<<<< HEAD
   #welcome-body #character-choice {
+=======
+  .selector-panel {
+>>>>>>> 7c5b571 (fix)
     width: 100%;
     padding: 16px 12px;
   }
 
+<<<<<<< HEAD
   .fake-selector {
     gap: 18px;
   }
 
   .pixel-border,
   #sidebar {
+=======
+  .selector-title {
+    font-size: 0.88rem;
+  }
+
+  .character-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .name-btn,
+  .retro-text-btn {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+    font-size: 0.72rem;
+  }
+
+  .start-btn {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .quiz-space,
+  .end-screen,
+  .result-screen {
+>>>>>>> 7c5b571 (fix)
     width: calc(100vw - 24px);
     padding: 20px 14px;
     margin: 20px auto;
   }
 
+<<<<<<< HEAD
   .retro-btn {
+=======
+  .retro-btn,
+  .retro-box-btn {
+>>>>>>> 7c5b571 (fix)
     width: 100%;
     max-width: 280px;
   }
 }
+<<<<<<< HEAD
 .character-list {
   width: 100%;
   display: flex;
@@ -497,3 +847,6 @@ main {
   opacity: 0;
   pointer-events: none;
 }
+=======
+>>>>>>> Stashed changes
+>>>>>>> 7c5b571 (fix)
