@@ -1,36 +1,33 @@
-const select = document.getElementById("character")
+// DOM Elements Declarations
+// ciaone
 
+const select = document.getElementById("character")
 select.addEventListener("change", (e) => {
-  document.querySelectorAll(".selectedGirl").forEach((girl) => {
+  const arrSelected = document.querySelectorAll(".selectedGirl")
+  arrSelected.forEach((girl) => {
     girl.classList.remove("selectedGirl")
   })
-
-  const selected = document.getElementById(e.target.value)
-  if (selected) {
-    selected.classList.add("selectedGirl")
-  }
+  const name = document.getElementById(`${e.target.value}`)
+  name.classList.add("selectedGirl")
 })
 
 let character = ""
-
 const form = document.getElementById("character-choice")
-
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   character = document.getElementById("character").value
   start()
 })
-
-function start() {
+const start = function () {
   if (character === "Emma") {
     const main = document.querySelector("main")
-
-    main.innerHTML = `
-      <section id="animazione">
+    main.innerHTML = `<section id="animazione">
         <img src="./Girls1/Girls1.GIF" alt="" />
       </section>
-      <div id="sidebar" class="pixel-border"></div>
-    `
+      <div id="sidebar" class="pixel-border">
+        <section id="domande">domande</section>
+        <section id="risposte">risposte</section>
+      </div>`
 
     const questionsGossip = [
       {
@@ -228,87 +225,142 @@ function start() {
         incorrect_answers: ["Shape of You", "Happy", "Counting Stars"],
       },
     ]
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
     const sidebar = document.getElementById("sidebar")
+    const domande = document.getElementById("domande")
+    const buttonSpace = document.getElementById("button-space")
+    const currentQuestionNum = document.getElementById("question-num")
+    const submitButton = document.getElementById("submit-button")
 
-    let score = 0
-    let questionNumber = 0
-    const numOfQuestions = 5
-    let pulledQuestions = []
-    let usedQuestionsArr = []
-    let usedAnswersArr = []
+    // Global Variables Delcaration
 
-    function randomQuestionExtraction() {
-      if (pulledQuestions.length === questionsGossip.length) {
+    let score = parseInt(sessionStorage.getItem("score")) || 0 // Dinamically updated score that will be displayed in the results page.
+    let questionNumber = 0 // Number of the question the user is facing.
+    let usedQuestionsArr =
+      // array di domande utilizzate
+      JSON.parse(sessionStorage.getItem("usedQuestionsArr")) || []
+    let usedAnswersArr =
+      // array di risposta utilizzate
+      JSON.parse(sessionStorage.getItem("usedAnswersArr")) || []
+    const difficulty = sessionStorage.getItem("chosenDifficulty") || "easy"
+    const numOfQuestions = sessionStorage.getItem("totalQuestions") || 5
+    let currentQuestion = {}
+
+    let pulledQuestions = [] // Array domande già poste
+    let arrQuestions = [] // Array dinamico che avrà le domande o Easy o Medium o Hard
+
+    const randomQuestionExtraction = function () {
+      //funzione per randomizzare domande
+      if (pulledQuestions.length === arrQuestions.length) {
+        //se l'array pulled question è uguale a quello delle question vuol dire che le domande sono finite
         return null
       }
-
+      let randomIndex
       let selectedQuestion
-
+      // finchè nelle pulled includono le select question
       do {
-        const randomIndex = Math.floor(Math.random() * questionsGossip.length)
-        selectedQuestion = questionsGossip[randomIndex]
+        randomIndex = Math.floor(Math.random() * arrQuestions.length)
+        selectedQuestion = arrQuestions[randomIndex]
       } while (pulledQuestions.includes(selectedQuestion))
 
       pulledQuestions.push(selectedQuestion)
       return selectedQuestion
     }
 
-    function getRandomAnswerOrder() {
-      return [0, 1, 2, 3].sort(() => Math.random() - 0.5)
+    // Function to generate a random array to mix the possible answers' positions each time.
+
+    const getRandomQuestionOrder = (questionObj) => {
+      const { type } = questionObj
+      if (type === "multiple") {
+        const positions = [0, 1, 2, 3]
+        positions.sort(() => Math.random() - 0.5)
+
+        return positions
+      } else {
+        const positions = [0, 1]
+        positions.sort(() => Math.random() - 0.5)
+
+        return positions
+      }
     }
 
-    function checkAnswer(e, questionObj) {
+    // Function to check if the answer is correct. If it is, updates score by 1.
+
+    const checkAnswer = (e, questionObj) => {
       const { question, correct_answer } = questionObj
       const buttonAnswers = document.querySelectorAll(".button-answer")
-
       buttonAnswers.forEach((btn) => {
         btn.disabled = true
         btn.style.cursor = "not-allowed"
       })
-
-      if (e.target.innerText.trim() === correct_answer) {
+      if (!e || !e.target) {
+        usedAnswersArr.push(
+          `You didn't answer the question ❌
+      ${correct_answer} ✅`,
+        )
+        usedQuestionsArr.push(question)
+        const nextQuestionObj = randomQuestionExtraction()
+        currentQuestion = nextQuestionObj
+        displayNextQuestion(nextQuestionObj)
+        return
+      }
+      if (
+        e.target.innerText.toLowerCase() &&
+        e.target.innerText.toLowerCase() === correct_answer.toLowerCase()
+      ) {
         e.target.classList.add("correct-answer")
         score++
         usedAnswersArr.push(`Your answer: ${correct_answer} ✅`)
       } else {
         e.target.classList.add("wrong-answer")
         usedAnswersArr.push(
-          `Your answer: ${e.target.innerText} ❌ - Correct answer: ${correct_answer} ✅`,
+          `Your answer: ${e.target.innerText} ❌ - 
+      Correct answer: ${correct_answer} ✅`,
         )
       }
-
       usedQuestionsArr.push(question)
-
       setTimeout(() => {
-        const nextQuestion = randomQuestionExtraction()
-        displayNextQuestion(nextQuestion)
+        const nextQuestionObj = randomQuestionExtraction()
+        currentQuestion = nextQuestionObj
+        displayNextQuestion(nextQuestionObj)
       }, 550)
     }
 
-    function displayHtml() {
+    const displayHtml = function () {
       if (document.getElementById("welcome-body")) {
         sidebar.innerHTML = `
-          <main>
-            <form class="welcome-form">
-              <section class="title">
-                <h1>Welcome to <strong>your worst date</strong></h1>
-              </section>
+<main>
+      <form class="welcome-form">
+        <section class="title">
+          <h1>Welcome to <strong>your worst date</strong></h1>
+        </section>
 
-              <section class="subtitle">
-                <h2>Instructions</h2>
-                <p>
-                  sono una ragazza brillante, elegante e profondamente innamorata della vita mondana.
-                  Amo le luci della città, gli aperitivi che si trasformano in notti lunghe.
-                </p>
-              </section>
+        <section class="subtitle">
+          <h2>Instructions</h2>
+          <p>
+            sono una ragazza brillante, elegante e profondamente innamorata della vita mondana. Amo le luci della città, gli aperitivi che si trasformano in notti lunghe. Sono sempre curata nei dettagli, ho uno stile naturale che non passa inosservato, ma senza mai risultare forzato.
+          </p>
+        </section>
 
-              <section class="retro-btn">
-                <button id="button-proceed" type="submit">Proceed</button>
-              </section>
-            </form>
-          </main>
-        `
 
+        <section class="retro-btn">
+          <button id="button-proceed" type="submit">Proceed</button>
+        </section>
+      </form>
+    </main>
+`
+        const proceedButton = document.getElementById("button-proceed")
         const welcomeForm = document.querySelector(".welcome-form")
 
         welcomeForm.addEventListener("submit", (e) => {
@@ -318,86 +370,115 @@ function start() {
           displayHtml()
         })
       } else if (document.getElementById("benchmark-body")) {
-        sidebar.innerHTML = `
-          <main class="quiz-space">
-            <article id="question-display">
-              <p id="question-title"></p>
-            </article>
-            <section id="button-space"></section>
-          </main>
-        `
+        sidebar.innerHTML = `<main class='quiz-space'>
+      <article id="question-diplay">
+        <p id="question-title"></p>
+      </article>
+      <section id="button-space" type='submit'></section>
+    </main> `
 
-        const firstQuestion = randomQuestionExtraction()
-        displayNextQuestion(firstQuestion)
-      } else if (document.getElementById("result-body")) {
-        sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
-
-        if (score >= 3) {
-          sidebar.innerHTML += "<p>sta sera te la lancio</p>"
-        } else {
-          sidebar.innerHTML += "<p>sparisci</p>"
+        if (difficulty === "easy") {
+          arrQuestions = questionsGossip.filter(
+            (question, i) => i <= numOfQuestions,
+          )
         }
 
-        sidebar.innerHTML += `<button id="try-again">🔥😉💋 puoi riprovarci</button>`
+        const primaDomanda = randomQuestionExtraction()
+        displayNextQuestion(primaDomanda)
 
+        return
+      } else if (document.getElementById("result-body")) {
+        console.log(usedAnswersArr)
+        sidebar.innerHTML = `<p> ${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`
+        if (score >= 3) {
+          sidebar.innerHTML += "<p> sta sera te la lancio </p>"
+        } else {
+          sidebar.innerHTML += "<p> sparisci </p>"
+        }
+        sidebar.innerHTML +=
+          " <button id='try-again'> 🔥😉💋 puoi riprovarci </button>"
         const tryAgain = document.getElementById("try-again")
-
         tryAgain.addEventListener("click", () => {
           const body = document.getElementById("result-body")
           body.setAttribute("id", "welcome-body")
-
-          score = 0
           questionNumber = 0
           pulledQuestions = []
           usedAnswersArr = []
           usedQuestionsArr = []
-
           displayHtml()
         })
+
+        sessionStorage.clear()
       }
     }
+    displayHtml()
 
-    function displayNextQuestion(questionObj) {
+    const displayNextQuestion = (questionObj) => {
       const buttonSpace = document.getElementById("button-space")
       const questionTitle = document.getElementById("question-title")
-
-      if (!questionObj || questionNumber >= numOfQuestions) {
-        questionTitle.innerText = "The Quiz is over.\nGo to your results!"
-        buttonSpace.innerHTML = `<button id="result-button">Results</button>`
-
-        const resultButton = document.getElementById("result-button")
-        resultButton.addEventListener("click", () => {
+      currentQuestion = questionObj
+      buttonSpace.innerHTML = ""
+      if (questionNumber >= numOfQuestions) {
+        sessionStorage.setItem("score", score)
+        sessionStorage.setItem("usedAnswersArr", JSON.stringify(usedAnswersArr))
+        sessionStorage.setItem(
+          "usedQuestionsArr",
+          JSON.stringify(usedQuestionsArr),
+        )
+        questionTitle.innerText = `The Quiz is over.\n
+    Go to your results!`
+        buttonSpace.innerHTML = `
+        <button id='result-button'>Results</button>
+    `
+        buttonSpace.classList.add("button-start")
+        const resultbutton = document.getElementById("result-button")
+        resultbutton.addEventListener("click", () => {
           const body = document.getElementById("benchmark-body")
           body.setAttribute("id", "result-body")
           displayHtml()
         })
-
         return
       }
-
       const { question, correct_answer, incorrect_answers } = questionObj
       const allAnswers = [...incorrect_answers, correct_answer]
-
-      questionTitle.innerText = question
-      buttonSpace.innerHTML = ""
+      questionTitle.innerText = `${question}`
       questionNumber++
-
-      getRandomAnswerOrder().forEach((index) => {
+      getRandomQuestionOrder(questionObj).forEach((index) => {
         buttonSpace.innerHTML += `
-          <button class="retro-btn button-answer">
-            ${allAnswers[index]}
-          </button>
-        `
+    <button class="retro-btn  button-answer">
+    ${allAnswers[index]}
+    </button>
+    `
       })
-
       const buttonAnswers = document.querySelectorAll(".button-answer")
-      buttonAnswers.forEach((button) => {
-        button.addEventListener("click", (e) => checkAnswer(e, questionObj))
-      })
+      buttonAnswers.forEach((button) =>
+        button.addEventListener("click", (e) => checkAnswer(e, questionObj)),
+      )
     }
-
-    displayHtml()
-  } else if (character === "Lisa") {
-    console.log("Lisa non ancora implementata")
+  } else if (character === Lisa) {
   }
 }
+
+// const displayResults = () => {
+//   const correctPercentageP = document.getElementById(
+//     "percentage-correct-answers",
+//   )
+//   const resultMessage = document.getElementById("result-message")
+//   const wrongPercentageP = document.getElementById("percentage-wrong-answers")
+//   const correctAnswersP = document.getElementById("number-correct-answers")
+//   const wrongAnswersP = document.getElementById("number-wrong-answers")
+//   correctPercentageP.innerText = `${((score / numOfQuestions) * 100).toFixed(1)}%`
+//   wrongPercentageP.innerText = `${(((numOfQuestions - score) / numOfQuestions) * 100).toFixed(1)}%`
+//   correctAnswersP.innerText = `${score}/${numOfQuestions} questions`
+//   wrongAnswersP.innerText = `${numOfQuestions - score}/${numOfQuestions} questions`
+//   if (((score / numOfQuestions) * 100).toFixed(1) < 60) {
+//     resultMessage.innerHTML = `
+//     <h4>We're sorry!</h4>
+//     <p class="youPass">You didn't pass the exam this time.</p>
+//     <div class="certificate">
+//     <p>You can try again later!</p>
+//     <p>Check your email (including promotion / spam folder)</p>
+//     </div>
+//     `
+//   }
+// }
