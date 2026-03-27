@@ -598,12 +598,12 @@ function start(girl) {
     } else if (document.getElementById("result-body")) {
       const body = document.getElementById("result-body");
       body.classList.add("bar-background");
-      sidebar.innerHTML = `<p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>`;
+      sidebar.innerHTML = `<p>${score >= 3 ? "Bravo," : "Inutile,"} ne hai beccate ${score}</p>`;
 
       if (score >= 3) {
         sidebar.innerHTML += `<p>${finalMessage}</p>`;
       } else {
-        sidebar.innerHTML += "<p>sparisci</p>";
+        sidebar.innerHTML += "<p>Sparisci!</p>";
       }
 
       sidebar.innerHTML += `<button class="retro-btn" id="try-again">🔥😉💋 puoi riprovarci</button>`;
@@ -630,8 +630,8 @@ function start(girl) {
     const questionTitle = document.getElementById("question-title");
 
     if (!questionObj || questionNumber >= numOfQuestions) {
-      questionTitle.innerText = "The Quiz is over.\nGo to your results!";
-      buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">Results</button>`;
+      questionTitle.innerText = "Mh....\nCi devo pensare...";
+      buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">"Ci ho beccato?"</button>`;
 
       const resultButton = document.getElementById("result-button");
       resultButton.addEventListener("click", () => {
