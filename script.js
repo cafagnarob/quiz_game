@@ -1,5 +1,3 @@
-const select = document.getElementById("character")
-
 // === CÓDIGO INSERTADO: referencia a los botones visuales ===
 const visualButtons = document.querySelectorAll(".name-btn")
 // === FIN DEL CÓDIGO INSERTADO ===
