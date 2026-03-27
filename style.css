@@ -499,6 +499,10 @@ body::before {
   color: rgba(255, 0, 0, 0.7);
 }
 
+#welcome-body {
+  background-color: #dd34;
+}
+
 /* =========================
    RESPONSIVE
    ========================= */
