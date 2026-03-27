@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const select = document.getElementById("character");
 
 select.addEventListener("change", (e) => {
@@ -9,12 +10,19 @@ select.addEventListener("change", (e) => {
   if (selected) {
     selected.classList.add("selectedGirl");
   }
+=======
+const characterInput = document.getElementById("character")
+const nameButtons = document.querySelectorAll(".name-btn")
+const girlCards = document.querySelectorAll(".tindermatch")
+const startBtn = document.getElementById("start-btn")
+>>>>>>> 7c5b571 (fix)
 
   // === CÓDIGO INSERTADO: sincroniza la selección visual del formulario ===
   document.querySelectorAll(".fake-option").forEach((option) => {
     option.classList.remove("active");
     const text = option.innerText.replace("▶", "").trim().toLowerCase();
 
+<<<<<<< HEAD
     if (text === e.target.value.toLowerCase()) {
       option.classList.add("active");
       option.innerText = `▶ ${e.target.value}`;
@@ -34,17 +42,74 @@ form.addEventListener("submit", (e) => {
   character = document.getElementById("character").value;
   start();
 });
+=======
+// seleccionar personaje
+nameButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    character = button.dataset.character
+    characterInput.value = character
+
+    nameButtons.forEach((btn) => btn.classList.remove("is-selected"))
+    girlCards.forEach((card) => card.classList.remove("active"))
+    document.querySelectorAll(".selectedGirl").forEach((girl) => {
+      girl.classList.remove("selectedGirl")
+    })
+
+    button.classList.add("is-selected")
+
+    const selectedName = document.getElementById(character)
+    if (selectedName) {
+      selectedName.classList.add("selectedGirl")
+    }
+
+    const selectedCard = document.querySelector(
+      `.tindermatch[data-character="${character}"]`,
+    )
+    if (selectedCard) {
+      selectedCard.classList.add("active")
+    }
+
+    console.log("Personaje seleccionado:", character)
+  })
+})
+
+// iniciar juego
+startBtn.addEventListener("click", () => {
+  if (!characterInput.value) {
+    alert("Seleziona una ragazza prima di iniziare")
+    return
+  }
+
+  character = characterInput.value
+  console.log("Iniciando juego con:", character)
+  start()
+})
+>>>>>>> 7c5b571 (fix)
 
 function start() {
+  console.log("start() ejecutada con:", character)
+
   if (character === "Emma") {
     const main = document.querySelector("main");
 
+    if (!main) {
+      console.error("No se encontró <main>")
+      return
+    }
+
     main.innerHTML = `
       <section id="animazione">
-        <img src="./Girls1/Girls1.GIF" alt="" />
+        <img src="./Girls1/Girls1.GIF" alt="Emma gif" />
       </section>
       <div id="sidebar" class="pixel-border"></div>
     `;
+
+    const sidebar = document.getElementById("sidebar")
+
+    if (!sidebar) {
+      console.error("No se encontró #sidebar")
+      return
+    }
 
     const questionsGossip = [
       {
@@ -99,6 +164,7 @@ function start() {
         correct_answer: "The Dark Side of the Moon",
         incorrect_answers: ["Nevermind", "Back in Black", "Hotel California"],
       },
+<<<<<<< HEAD
       {
         category: "Music: Pop",
         type: "multiple",
@@ -250,6 +316,14 @@ function start() {
     let pulledQuestions = [];
     let usedQuestionsArr = [];
     let usedAnswersArr = [];
+=======
+    ]
+
+    let score = 0
+    let questionNumber = 0
+    const numOfQuestions = 5
+    let pulledQuestions = []
+>>>>>>> 7c5b571 (fix)
 
     function randomQuestionExtraction() {
       if (pulledQuestions.length === questionsGossip.length) {
@@ -272,6 +346,7 @@ function start() {
     }
 
     function checkAnswer(e, questionObj) {
+<<<<<<< HEAD
       const { question, correct_answer } = questionObj;
       const buttonAnswers = document.querySelectorAll(".button-answer");
 
@@ -293,6 +368,22 @@ function start() {
 
       usedQuestionsArr.push(question);
 
+=======
+      const buttonAnswers = document.querySelectorAll(".button-answer")
+      const correctAnswer = questionObj.correct_answer
+
+      buttonAnswers.forEach((btn) => {
+        btn.disabled = true
+      })
+
+      if (e.target.innerText.trim() === correctAnswer) {
+        e.target.classList.add("correct-answer")
+        score++
+      } else {
+        e.target.classList.add("wrong-answer")
+      }
+
+>>>>>>> 7c5b571 (fix)
       setTimeout(() => {
         const nextQuestion = randomQuestionExtraction();
         displayNextQuestion(nextQuestion);
@@ -300,22 +391,21 @@ function start() {
     }
 
     function displayHtml() {
-      if (document.getElementById("welcome-body")) {
-        sidebar.innerHTML = `
-          <main>
-            <form class="welcome-form">
-              <section class="title">
-                <h1>Welcome to <strong>your worst date</strong></h1>
-              </section>
+      sidebar.innerHTML = `
+        <div class="welcome-screen">
+          <section class="title">
+            <h1>Welcome to <strong>your worst date</strong></h1>
+          </section>
 
-              <section class="subtitle">
-                <h2>Instructions</h2>
-                <p>
-                  sono una ragazza brillante, elegante e profondamente innamorata della vita mondana.
-                  Amo le luci della città, gli aperitivi che si trasformano in notti lunghe.
-                </p>
-              </section>
+          <section class="subtitle">
+            <h2>Instructions</h2>
+            <p>
+              sono una ragazza brillante, elegante e profondamente innamorata della vita mondana.
+              Amo le luci della città, gli aperitivi che si trasformano in notti lunghe.
+            </p>
+          </section>
 
+<<<<<<< HEAD
               <section >
                 <button class="retro-btn" id="button-proceed" type="submit">Proceed</button>
               </section>
@@ -369,13 +459,61 @@ function start() {
           displayHtml();
         });
       }
+=======
+          <section class="retro-btn">
+            <button id="button-proceed" type="button">Proceed</button>
+          </section>
+        </div>
+      `
+
+      const proceedBtn = document.getElementById("button-proceed")
+
+      proceedBtn.addEventListener("click", () => {
+        renderQuiz()
+      })
+    }
+
+    function renderQuiz() {
+      sidebar.innerHTML = `
+        <div class="quiz-space">
+          <article id="question-display">
+            <p id="question-title"></p>
+          </article>
+          <section id="button-space"></section>
+        </div>
+      `
+
+      const firstQuestion = randomQuestionExtraction()
+      displayNextQuestion(firstQuestion)
+    }
+
+    function renderResults() {
+      sidebar.innerHTML = `
+        <div class="result-screen">
+          <p>${score >= 3 ? "bravo," : "inutile,"} ne hai beccate ${score}</p>
+          <p>${score >= 3 ? "sta sera te la lancio" : "sparisci"}</p>
+          <button id="try-again" type="button">🔥😉💋 puoi riprovarci</button>
+        </div>
+      `
+
+      const tryAgain = document.getElementById("try-again")
+      tryAgain.addEventListener("click", () => {
+        location.reload()
+      })
+>>>>>>> 7c5b571 (fix)
     }
 
     function displayNextQuestion(questionObj) {
       const buttonSpace = document.getElementById("button-space");
       const questionTitle = document.getElementById("question-title");
 
+      if (!buttonSpace || !questionTitle) {
+        console.error("No existen #button-space o #question-title")
+        return
+      }
+
       if (!questionObj || questionNumber >= numOfQuestions) {
+<<<<<<< HEAD
         questionTitle.innerText = "The Quiz is over.\nGo to your results!";
         buttonSpace.innerHTML = `<button class="retro-btn" id="result-button">Results</button>`;
 
@@ -387,6 +525,14 @@ function start() {
         });
 
         return;
+=======
+        questionTitle.innerText = "The Quiz is over.\nGo to your results!"
+        buttonSpace.innerHTML = `<button id="result-button" type="button">Results</button>`
+
+        const resultButton = document.getElementById("result-button")
+        resultButton.addEventListener("click", renderResults)
+        return
+>>>>>>> 7c5b571 (fix)
       }
 
       const { question, correct_answer, incorrect_answers } = questionObj;
@@ -398,10 +544,20 @@ function start() {
 
       getRandomAnswerOrder().forEach((index) => {
         buttonSpace.innerHTML += `
+<<<<<<< HEAD
           <button class="retro-btn button-answer">${allAnswers[index]}</button>
         `;
       });
       const buttonAnswers = document.querySelectorAll(".button-answer");
+=======
+          <button class="retro-btn button-answer" type="button">
+            ${allAnswers[index]}
+          </button>
+        `
+      })
+
+      const buttonAnswers = document.querySelectorAll(".button-answer")
+>>>>>>> 7c5b571 (fix)
       buttonAnswers.forEach((button) => {
         button.addEventListener("click", (e) => checkAnswer(e, questionObj));
       });
@@ -409,6 +565,12 @@ function start() {
 
     displayHtml();
   } else if (character === "Lisa") {
+<<<<<<< HEAD
     console.log("Lisa non ancora implementata");
+=======
+    alert("Lisa non ancora implementata")
+  } else if (character === "Anna") {
+    alert("Anna non ancora implementata")
+>>>>>>> 7c5b571 (fix)
   }
 }
