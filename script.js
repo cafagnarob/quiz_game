@@ -556,7 +556,7 @@ function start(girl) {
           <main>
             <form class="welcome-form">
               <section class="title">
-                <h1>Welcome to <strong>your worst date</strong></h1>
+                <h1>Welcome to <strong>Your Worst Date</strong></h1>
               </section>
 
               <section class="subtitle">
