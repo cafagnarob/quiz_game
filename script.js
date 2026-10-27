@@ -459,7 +459,7 @@ function start(girl) {
       startPageBody.classList.remove("bar-background")
       startPageBody.innerHTML = ` <header>
       <img
-        src="./Girls1/ChatGPT Image 27 mar 2026, 10_19_52.png"
+        src="./Girls1/logo.png"
         alt="logo_game"
       />
     </header>
