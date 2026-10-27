@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./Girls1/ChatGPT%20Image%2027%20mar%202026,%2010_19_52.png" alt="The Worst Date" width="420" />
+<img src="./Girls1/logo.png" alt="The Worst Date" width="420" />
 
 # 💔 THE WORST DATE 💔
 
@@ -19,7 +19,7 @@ Hai **5 domande** per dimostrarle che vali qualcosa. Sbagli? Il cuore resta vuot
 
 **The Worst Date** è un quiz in stile dating-sim anni '90: grafica pixel art, font retrò, cuori da riempire e zero pietà per chi non sa la differenza tra un Negroni e uno Spritz.
 
-> ⚠️ *Nessun cuore è stato spezzato davvero durante lo sviluppo di questo gioco. Forse.*
+> ⚠️ _Nessun cuore è stato spezzato davvero durante lo sviluppo di questo gioco. Forse._
 
 ---
 
@@ -54,15 +54,15 @@ Hai **5 domande** per dimostrarle che vali qualcosa. Sbagli? Il cuore resta vuot
 
 1. **Premi "Gioca"** e prepara il tuo miglior sorriso.
 2. **Scegli il tuo match** tra Emma, Lisa e Anna.
-3. **Ascolta la sua presentazione** e rispondi con un timido *"Senti, ma..."*
+3. **Ascolta la sua presentazione** e rispondi con un timido _"Senti, ma..."_
 4. **Rispondi a 5 domande** pescate a caso dalle sue passioni. Ogni partita è diversa!
 5. **Riempi i cuori** ❤️ ogni risposta giusta accende un cuore, ogni errore lo lascia vuoto 🖤
 6. **Scopri il verdetto**:
 
-| Cuori ❤️ | Esito |
-| :---: | :--- |
-| 0 – 2 | 🚪 *"Sparisci!"* (e ha già chiamato il taxi) |
-| 3 – 5 | 🔥 Hai fatto colpo... la sua frase finale è tutta per te |
+| Cuori ❤️ | Esito                                                    |
+| :------: | :------------------------------------------------------- |
+|  0 – 2   | 🚪 _"Sparisci!"_ (e ha già chiamato il taxi)             |
+|  3 – 5   | 🔥 Hai fatto colpo... la sua frase finale è tutta per te |
 
 7. Non è andata bene? **Puoi riprovarci** 🔥😉💋 tanto lei non ricorda niente.
 
@@ -118,12 +118,12 @@ quiz_game/
 
 Quattro sviluppatori, un solo obiettivo: rovinarti la serata.
 
-| Player | GitHub |
-| :--- | :--- |
+| Player                 | GitHub                                       |
+| :--------------------- | :------------------------------------------- |
 | 🎮 **Roberto Cafagna** | [@cafagnarob](https://github.com/cafagnarob) |
-| 🎮 **Andrea Saderi** | |
-| 🎮 **Paolo** | [@PaoloF16](https://github.com/PaoloF16) |
-| 🎮 **Vincenzo Mola** | |
+| 🎮 **Andrea Saderi**   |                                              |
+| 🎮 **Paolo**           | [@PaoloF16](https://github.com/PaoloF16)     |
+| 🎮 **Vincenzo Mola**   |                                              |
 
 Progetto realizzato durante il Master Full-Stack di **Epicode**.
 
@@ -133,6 +133,6 @@ Progetto realizzato durante il Master Full-Stack di **Epicode**.
 
 **GAME OVER?** 🖤🖤🖤🖤🖤
 
-*Insert coin to try again* 🪙
+_Insert coin to try again_ 🪙
 
 </div>
