@@ -526,6 +526,12 @@ function start(girl) {
       select.addEventListener("change", (e) => {
         document.querySelectorAll(".selectedGirl").forEach((girl) => {
           girl.classList.remove("selectedGirl")
+          // Su mobile porta in vista la ragazza scelta nel carosello
+          selected.closest(".tindermatch").scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+          })
         })
 
         const selected = document.getElementById(e.target.value)
