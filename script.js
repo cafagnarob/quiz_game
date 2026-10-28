@@ -455,7 +455,7 @@ function start(girl) {
     setTimeout(() => {
       const nextQuestion = randomQuestionExtraction()
       displayNextQuestion(nextQuestion)
-    }, 350)
+    }, 900)
   }
 
   function displayHtml() {
