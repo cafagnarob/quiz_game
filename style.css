@@ -8,7 +8,7 @@
 
 body {
   font-family: "Press Start 2P", system-ui;
-  height: 100dvh;
+  min-height: 100dvh;
   color: white;
   display: flex;
   flex-direction: column;
@@ -308,7 +308,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  height: 25%;
+  /* height: 25%; */
 }
 
 .character-list {
@@ -530,169 +530,98 @@ body::before {
    RESPONSIVE
    ========================= */
 /* 
-@media (max-width: 1200px) {
-  .girls-stage {
-    gap: 6px;
-  }
+/* =========================
+   MOBILE (fino a 700px)
+   Su telefono: le ragazze diventano un carosello da scorrere col dito,
+   e nelle schermate di gioco la ragazza va sopra e il pannello sotto.
+   ========================= */
 
-  .tindermatch img {
-    width: clamp(240px, 29vw, 360px);
-  }
-
-  .selector-panel {
-    width: min(900px, 94%);
-  }
-}
-
-@media (max-width: 900px) {
-  #welcome-body main {
-    grid-template-columns: repeat(1, minmax(160px, 1fr));
-    gap: 2px;
-    padding: 14px 14px 18px;
-  }
-
-  #welcome-body .tindermatch img {
-    width: clamp(170px, 27vw, 270px);
-  }
-
-  #welcome-body .tindermatch p {
-    font-size: clamp(0.72rem, 1vw, 0.95rem);
-  }
-
-  #welcome-body #character-choice,
-  .selector-panel {
-    width: 96%;
-    padding: 18px 16px;
-  }
-
-  .game-screen {
-    padding: 14px 14px 18px;
-  }
-
-  .girls-stage {
-    grid-template-columns: repeat(3, minmax(160px, 1fr));
-    gap: 2px;
-    padding: 0;
-  }
-
-  .girl-name {
-    font-size: clamp(0.72rem, 1vw, 0.95rem);
-  }
-
-  .selector-title {
-    margin-bottom: 18px;
-  }
-
-  .character-list {
-    gap: 14px 20px;
-  }
-
-  .name-btn,
-  .retro-text-btn {
-    font-size: 0.78rem;
-    padding: 8px 10px;
-  }
-
-  #benchmark-body main,
-  #result-body main {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #benchmark-body #sidebar,
-  #result-body #sidebar {
-    width: 96%;
-    min-height: auto;
-  }
-
-  #animazione img {
-    width: min(90vw, 420px);
+/* Sui touch screen l'hover resta "attaccato" dopo il tocco: lo neutralizziamo */
+@media (hover: none) {
+  .retro-btn:hover {
+    background: #f5f5f5;
+    color: black;
   }
 }
 
 @media (max-width: 700px) {
+  body {
+    background-attachment: scroll; /* fixed su iOS ingrandisce lo sfondo */
+  }
+
+  header img {
+    width: 45%;
+  }
+
+  /* --- Selezione: carosello orizzontale (swipe, come Tinder) --- */
   #welcome-body main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
-    justify-items: center;
-    align-items: center;
-    gap: 18px;
-    padding: 12px;
-  }
-
-  #welcome-body .tindermatch:nth-of-type(1),
-  #welcome-body .tindermatch:nth-of-type(2),
-  #welcome-body .tindermatch:nth-of-type(3),
-  #welcome-body #character-choice {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  #welcome-body .tindermatch img,
-  .tindermatch img {
-    width: min(72vw, 290px);
-  }
-
-  #welcome-body .tindermatch p,
-  .girl-name {
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-  }
-
-  .game-screen {
+    height: auto;
     justify-content: flex-start;
-    gap: 18px;
-    padding: 12px;
+    overflow-x: auto; /* il main scorre in orizzontale */
+    scroll-snap-type: x mandatory; /* e si ferma su una ragazza alla volta */
+    padding: 12px 0;
+    gap: 0;
   }
 
-  .girls-stage {
-    grid-template-columns: 1fr;
-    gap: 18px;
+  #welcome-body .tindermatch {
+    flex: 0 0 100%; /* ogni ragazza occupa tutto lo schermo */
+    scroll-snap-align: center;
   }
 
-  #welcome-body #character-choice,
-  .selector-panel {
-    width: 100%;
+  #welcome-body .tindermatch img {
+    width: min(70vw, 280px);
+    height: auto;
+  }
+
+  #welcome-body #character-choice {
+    width: calc(100% - 32px);
     padding: 16px 12px;
+    gap: 14px;
   }
 
-  .fake-selector {
-    gap: 18px;
-  }
-
-  .selector-title {
-    font-size: 0.88rem;
-  }
-
-  .character-list {
+  /* --- Gioco: ragazza sopra, pannello sotto --- */
+  #benchmark-body main,
+  #result-body main,
+  #welcome-body main:has(#sidebar) {
     flex-direction: column;
+    align-items: center;
+    overflow: visible;
+    padding: 12px 16px 24px;
     gap: 12px;
   }
 
-  .name-btn,
-  .retro-text-btn {
-    width: 100%;
-    max-width: 260px;
-    justify-content: center;
-    font-size: 0.72rem;
+  #animazione img {
+    width: min(45vw, 180px);
   }
 
-  .start-btn,
-  .retro-btn,
-  .retro-box-btn {
+  #benchmark-body #sidebar,
+  #result-body #sidebar,
+  #welcome-body #sidebar {
     width: 100%;
-    max-width: 280px;
-  }
-
-  #sidebar,
-  .quiz-space,
-  .end-screen,
-  .result-screen {
-    width: calc(100vw - 24px);
+    height: auto;
+    min-height: auto;
+    margin: 0;
     padding: 20px 14px;
-    margin: 20px auto;
   }
-} */
+
+  #question-title {
+    padding: 10px;
+  }
+
+  #button-space {
+    margin-top: 0;
+    padding: 10px 0;
+  }
+
+  .retro-btn {
+    width: 100%;
+  }
+
+  .full-heart,
+  .empty-heart {
+    width: 36px;
+  }
+}
 
 header img {
   width: 20%;

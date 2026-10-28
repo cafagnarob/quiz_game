@@ -345,6 +345,12 @@ select.addEventListener("change", (e) => {
   const selected = document.getElementById(e.target.value)
   if (selected) {
     selected.classList.add("selectedGirl")
+    // Su mobile porta in vista la ragazza scelta nel carosello
+    selected.closest(".tindermatch").scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    })
   }
 
   visualButtons.forEach((btn) => {
