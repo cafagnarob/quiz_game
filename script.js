@@ -130,7 +130,7 @@ const girls = [
         type: "multiple",
         difficulty: "easy",
         question:
-          "Quale personaggio di 'Mercoledì Addams' è diventato un'icona goth grazie alla recente serie TV?",
+          "Quale attrice ha interpretato Mercoledì Addams nella serie TV di Netflix, diventando un'icona goth?",
         correct_answer: "Jenna Ortega",
         incorrect_answers: ["Millie Bobby Brown", "Emma Watson", "Zendaya"],
       },
@@ -291,8 +291,8 @@ const girls = [
         type: "multiple",
         difficulty: "easy",
         question: "Qual è il fiume più lungo del mondo?",
-        correct_answer: "Rio delle Amazzoni",
-        incorrect_answers: ["Nilo", "Mississippi", "Danubio"],
+        correct_answer: "Nilo",
+        incorrect_answers: ["Mississippi", "Danubio", "Yangtze"],
       },
       {
         category: "Medicine",
@@ -310,7 +310,7 @@ const girls = [
         question:
           "Quale lingua è considerata la 'madre' delle lingue romanze come italiano, francese e spagnolo?",
         correct_answer: "Latino",
-        incorrect_answers: ["Greco Antico", "Sancrito", "Arabo"],
+        incorrect_answers: ["Greco Antico", "Sanscrito", "Arabo"],
       },
       {
         category: "Politics",
