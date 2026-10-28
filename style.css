@@ -135,7 +135,7 @@ body::before {
 }
 
 #welcome-body .tindermatch img {
-  width: fit-content;
+  /* width: fit-content; */
   height: 100%;
 }
 
@@ -308,7 +308,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  /* height: 25%; */
+  height: 25%;
 }
 
 .character-list {
